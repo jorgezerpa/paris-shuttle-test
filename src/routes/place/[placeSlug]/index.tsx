@@ -1,13 +1,12 @@
-import { component$  } from '@builder.io/qwik';
-import { useLocation  } from '@builder.io/qwik-city';
+import { component$ } from '@builder.io/qwik';
+import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
+// import type { DocumentHead } from '@builder.io/qwik-city';
+// import { Link } from '@builder.io/qwik-city';
 
 export default component$(() => {
-    const { params:{ placeSlug } } = useLocation()
-
-
   return (
-    <div>
-        { placeSlug }
+    <div class=''>
+      <BannerForm />
     </div>
-  )
+  );
 });

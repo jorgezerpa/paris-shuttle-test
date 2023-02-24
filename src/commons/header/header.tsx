@@ -3,12 +3,12 @@ import Topbar from '~/components/header/Topbar/topbar';
 import NavbarDesktop from '~/components/header/navbarDesktop.tsx/navbarDesktop';
 import ContactMobile from '~/components/header/contactMobile/contactMobile';
 
-export default component$(() => {
+export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
 
   return (
     <>
       <header>
-        <Topbar />
+        <Topbar showNavbar={showNavbar} />
         <NavbarDesktop />
         <ContactMobile />
       </header>

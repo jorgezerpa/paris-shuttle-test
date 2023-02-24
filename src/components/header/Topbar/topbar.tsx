@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import LanguageDropdown from '../languageDropdown/languageDropdown';
 
-export default component$(() => {
+export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
     return (
         <>
           <div class={`bg-primary-dark w-full hidden lg:flex justify-center items-center py-3`}>
@@ -43,7 +43,7 @@ export default component$(() => {
           <div class={`bg-primary-dark w-full flex lg:hidden justify-center items-center py-2 px-3`}>
             <div class={`w-full max-w-[1200px] flex justify-between items-center py-3`}>
               
-              <div class='flex-1'>
+              <div class='flex-1' onClick$={()=>showNavbar.value=!showNavbar.value}>
                   <img src='/images/menu.png' class='h-[20px]' />
               </div>
               
