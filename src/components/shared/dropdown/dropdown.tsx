@@ -11,7 +11,7 @@ export default component$(({icon, title, items}:{icon:string, title:string, item
   
   return (
     <>
-        <div class="group block relative">
+        <div class="group block relative w-full">
           <button
           type='button'
             onClick$={()=>showLanguages.value = !showLanguages.value}
