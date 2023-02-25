@@ -1,6 +1,19 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useStylesScoped$ } from '@builder.io/qwik';
+import styles from './index.css?inline'
 
 export default component$(() => {
+    useStylesScoped$(styles)
+
+    const hoursArray = []
+    for(let i = 0; i<24; i++){
+        for(let j = 0; j<12; j++){ 
+            const hours = i<10 ? `0${i}` : `${i}`  
+            const minutes = (j*5)<10 ? `0${j*5}` : `${j*5}`  
+            const time = `${hours}:${minutes}` 
+            hoursArray.push(time) 
+        } 
+    }
+
 
   return  (
     <div class="flex items-center flex-col">
@@ -77,25 +90,13 @@ export default component$(() => {
                 </div>
                 <div class="w-full lg:w-1/3 px-3">
                     <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Date de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
-                    <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
-                        <option value="US" selected>1</option>
-                        <option value="US">2</option>
-                        <option value="US">3</option>
-                        <option value="US">4</option>
-                        <option value="US">5</option>
-                        <option value="US">6</option>
-                        <option value="US">7</option>
-                        <option value="US">8</option>
-                    </select>
+                    <input type={'date'} id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                 </div>
                 <div class="w-full lg:w-1/3 px-3">
                     <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
                     <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                         <option value="" selected></option>
-                        <option value="00:00" >00:00</option>
-                        <option value="00:00" >00:05</option>
-                        <option value="00:00" >00:10</option>
-                        
+                        {hoursArray.map(hour=> <option value="00:00" class="text-lg" >{ hour }</option> )}
                     </select>
                 </div>            
                 <div class="w-full lg:w-1/3 px-3">

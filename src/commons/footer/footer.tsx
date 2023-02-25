@@ -8,9 +8,9 @@ export default component$(() => {
         { title:' Affilié', path:'' },
     ]
     const SOCIAL_MEDIA = [
-        { image:'icons/facebook-square.png', path:'/' },
-        { image:'icons/twitter-square.png', path:'/' },
-        { image:'icons/google-plus-square.png', path:'/' },
+        { image:'/icons/facebook-square.png', path:'/' },
+        { image:'/icons/twitter-square.png', path:'/' },
+        { image:'/icons/google-plus-square.png', path:'/' },
     ]
 
 
