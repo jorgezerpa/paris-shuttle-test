@@ -1,15 +1,24 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useSignal, useClientEffect$ } from '@builder.io/qwik';
 import Topbar from '~/components/header/Topbar/topbar';
 import NavbarDesktop from '~/components/header/navbarDesktop.tsx/navbarDesktop';
 import ContactMobile from '~/components/header/contactMobile/contactMobile';
 
 export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
 
+  const showFixedNavbar = useSignal(false)
+
+  useClientEffect$(() => {
+    window.addEventListener('scroll', ()=>{
+      showFixedNavbar.value = window.scrollY>=94 ? true : false 
+    })
+  });
+
   return (
     <>
       <header>
         <Topbar showNavbar={showNavbar} />
         <NavbarDesktop />
+        { showFixedNavbar.value && <NavbarDesktop isFixed={true} /> }
         <ContactMobile />
       </header>
     </>

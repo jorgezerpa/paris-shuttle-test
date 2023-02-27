@@ -4,7 +4,7 @@ import LanguageDropdown from '../languageDropdown/languageDropdown';
 export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
     return (
         <>
-          <div class={`bg-primary-dark w-full hidden lg:flex justify-center items-center py-3`}>
+          <div class={`bg-primary-dark w-full hidden lg:flex justify-center items-center py-3 px-2 lg:h-[94px]`}>
             <div class={`w-full max-w-[1350px] flex justify-between items-center`}>
               
               <div class='flex-1'>
@@ -18,7 +18,7 @@ export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
                 <h4 class='text-center text-white font-opensans font-normal text-base'>Service sur mesure, à tarifs fixes.</h4>
               </div>
     
-              <div class='flex-1 flex justify-center items-center gap-5 text-white'>
+              <div class='flex-1 flex justify-end items-center gap-5 text-white'>
                
                 <div class="">
                   <LanguageDropdown />

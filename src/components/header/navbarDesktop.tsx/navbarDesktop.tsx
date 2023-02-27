@@ -18,7 +18,7 @@ export const MenuElement = component$(({ item }: {item:any}) => {
 })
 
 
-export default component$(() => {
+export default component$(({ isFixed=false }:{ isFixed?:boolean }) => {
     const ITEMS = [
         // { title:'Accueil', path:'/' },
         { title:'Orly', path:'/place/orly' },
@@ -32,7 +32,7 @@ export default component$(() => {
 
 
   return (
-    <div class='bg-primary-light pl-2 justify-center hidden lg:flex'>
+    <div class={`bg-primary-light pl-2 justify-center hidden lg:flex ${isFixed && 'fixed w-full z-50 top-0'}`}>
         <div class='max-w-[1350px] w-full flex text-white text-lg font-bold justify-start gap-10'>
             <div class='relative h-full py-3'><Link href={'/'}>Accueil</Link></div>
             {ITEMS.map(item=>(
