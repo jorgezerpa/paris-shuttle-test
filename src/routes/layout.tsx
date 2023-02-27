@@ -1,30 +1,23 @@
-import { component$, Slot } from '@builder.io/qwik';
-import { loader$ } from '@builder.io/qwik-city';
+import { component$, Slot, useSignal } from '@builder.io/qwik';
 
 import Header from '../components/header/header';
+import Footer from '~/components/footer/footer';
+import { DrawerMobile } from '~/libs/drawerMobile/drawerMobile';
 
-export const serverTimeLoader = loader$(() => {
-  return {
-    date: new Date().toISOString(),
-  };
-});
 
 export default component$(() => {
-  const serverTime = serverTimeLoader.use();
+  const showMobileMenu = useSignal(false)
+
   return (
-    <>
-      <main>
-        <Header />
+    <div class='overflow-x-clip'>
+      <main >
+        <Header showNavbar={showMobileMenu} />
         <section>
           <Slot />
         </section>
       </main>
-      <footer>
-        <a href="https://www.builder.io/" target="_blank">
-          Made with ♡ by Builder.io
-          <div>{serverTime.value.date}</div>
-        </a>
-      </footer>
-    </>
+      <Footer />
+      <DrawerMobile showNavbar={showMobileMenu} />
+    </div>
   );
 });
