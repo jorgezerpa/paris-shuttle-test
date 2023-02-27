@@ -20,7 +20,6 @@ export default component$(() => {
     <div class="flex items-center flex-col">
       <div class="max-w-[1000px] w-full px-3">
         <h2 class={`pt-5 mb-2 text-2xl text-center border-b-primary-dark border-b text-primary-dark font-bold`}>DÉTAILS RÉSERVATION</h2>
-        { travelWithReturn.value && <div>aaaa</div> }
         <form class={` relative w-full mt-4 py-7 rounded-sm bg-white bg-opacity-40`} >
           <div class='p-3 flex w-full flex-col lg:flex-row justify-between items-center gap-6'>
             <div class="w-full">
@@ -66,7 +65,7 @@ export default component$(() => {
             <h2 class={`px-3 text-1xl text-primary-dark font-bold mt-8 my-5 mb-2`}>TYPE DE VOYAGE</h2>
             <div class="flex items-center justify-start gap-5 mb-4 px-5">
                 <div class="flex items-center">
-                    <input onChange$={(e)=>{ travelWithReturn.value = true }} id="default-radio-1" type="radio" value="simple" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 " />
+                    <input onChange$={()=>{ travelWithReturn.value = true }} id="default-radio-1" type="radio" value="simple" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 " />
                     <label for="default-radio-1" class="ml-2 font-normal text-gray-900">Aller simple</label>
                 </div>
                 <div class="flex items-center">
