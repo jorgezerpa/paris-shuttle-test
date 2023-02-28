@@ -12,3 +12,26 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
+=======
+/* width */
+::-webkit-scrollbar {
+    width: 2px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
+>>>>>>> 96ba01017e3ee35b6d163d7d49d12107732c2d42
