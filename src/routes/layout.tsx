@@ -1,8 +1,8 @@
 import { component$, Slot, useSignal } from '@builder.io/qwik';
 
-import Header from '../commons/header/header';
-import Footer from '~/commons/footer/footer';
-import { DrawerMobile } from '~/commons/drawerMobile/drawerMobile';
+import Header from '../components/header/header';
+import Footer from '~/components/footer/footer';
+import { DrawerMobile } from '~/libs/drawerMobile/drawerMobile';
 
 
 export default component$(() => {
