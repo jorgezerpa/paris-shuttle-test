@@ -1,6 +1,6 @@
 import { component$, useSignal, useClientEffect$ } from '@builder.io/qwik';
 import Topbar from '~/libs/Topbar/topbar';
-import NavbarDesktop from '~/libs/navbarDesktop.tsx/navbarDesktop';
+import NavbarDesktop from '~/libs/navbarDesktop/navbarDesktop';
 import ContactMobile from '~/libs/contactMobile/contactMobile';
 
 export default component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {

@@ -1,7 +1,6 @@
 import { component$, Slot, useSignal } from '@builder.io/qwik';
-
-import Header from '../components/header/header';
-import Footer from '~/components/footer/footer';
+import Header from '~/components/Header/header';
+import Footer from '~/components/Footer/Footer';
 import { DrawerMobile } from '~/libs/drawerMobile/drawerMobile';
 
 

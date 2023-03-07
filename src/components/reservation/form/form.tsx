@@ -95,7 +95,7 @@ export default component$(() => {
                             <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="" selected></option>
-                                {hoursArray.map(hour => <option value="00:00" class="text-lg" >{hour}</option>)}
+                                {hoursArray.map((hour, index) => <option key={index} value="00:00" class="text-lg" >{hour}</option>)}
                             </select>
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
@@ -148,7 +148,7 @@ export default component$(() => {
                                 <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
                                 <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="" selected></option>
-                                    {hoursArray.map(hour => <option value="00:00" class="text-lg" >{hour}</option>)}
+                                    {hoursArray.map((hour, index) => <option key={index} value="00:00" class="text-lg" >{hour}</option>)}
                                 </select>
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
@@ -183,22 +183,22 @@ export default component$(() => {
                     </div>
                     <div class='p-3 pb-7 bg-gray-100 flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start border-b border-b-white'>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark dark:text-white">Nom<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark">Nom<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark dark:text-white">Prénom<span class='text-red-500 text-2xl'>*</span> </label>
+                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark">Prénom<span class='text-red-500 text-2xl'>*</span> </label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
                             {/* SPACING DIV  */}
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark dark:text-white">Adresse Email<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark">Adresse Email<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark dark:text-white">Téléphone<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="pt-5 block mb-1 text-base font-normal text-primary-dark">Téléphone<span class='text-red-500 text-2xl'>*</span></label>
                             <input type='text' id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                     </div>

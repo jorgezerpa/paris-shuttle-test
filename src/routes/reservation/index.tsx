@@ -1,6 +1,6 @@
 import { component$, useStylesScoped$ } from '@builder.io/qwik';
 import styles from './index.css?inline'
-import Form from '~/components/reservation/form/form';
+import Form from '~/components/reservation/Form/Form';
 import { DocumentHead } from '@builder.io/qwik-city';
 
 export default component$(() => {
