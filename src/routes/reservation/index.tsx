@@ -1,10 +1,9 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
-import styles from './index.css?inline'
-import Form from '~/components/reservation/Form/Form';
+import { component$ } from '@builder.io/qwik';
 import { DocumentHead } from '@builder.io/qwik-city';
+import Form from '~/components/reservation/form/form';
 
 export default component$(() => {
-    useStylesScoped$(styles)
+
 
     const hoursArray = []
     for (let i = 0; i < 24; i++) {
@@ -21,7 +20,7 @@ export default component$(() => {
         <div class="flex items-center flex-col pt-5">
             <div class="max-w-[1100px] w-full px-3">
                 <h2 class={`pt-5 mb-2 text-3xl text-center border-b-primary-dark border-b text-primary-dark font-bold`}>DÉTAILS RÉSERVATION</h2>
-                <Form />
+                <Form/>
             </div>
 
             <div class='bg-gray-100 w-full flex items-center flex-col'>

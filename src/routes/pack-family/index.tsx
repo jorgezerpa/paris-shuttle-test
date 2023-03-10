@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik';
 import { DocumentHead } from '@builder.io/qwik-city';
 
+
 export default component$(() => {
     return (
         <>
@@ -22,7 +23,7 @@ export default component$(() => {
                             </div>
 
                             <div class="flex justify-center lg:justify-start">
-                                <div class="px-6 py-2 text-primary-dark font-bold bg-[#F1C933] rounded-md inline-flex justify-center items-center">
+                                <div class="px-6 py-2 cursor-pointer text-primary-dark font-bold bg-[#F1C933] rounded-md inline-flex justify-center items-center">
                                     Je Réserve
                                 </div>
                             </div>
@@ -49,7 +50,7 @@ export default component$(() => {
                             </div>
 
                             <div class="flex justify-center lg:justify-start">
-                                <div class="px-6 py-2 text-primary-dark font-bold bg-[#F1C933] rounded-md inline-flex justify-center items-center">
+                                <div class="px-6 cursor-pointer py-2 text-primary-dark font-bold bg-[#F1C933] rounded-md inline-flex justify-center items-center">
                                     Je Réserve
                                 </div>
                             </div>

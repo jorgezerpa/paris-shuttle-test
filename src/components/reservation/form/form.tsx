@@ -1,8 +1,7 @@
-import { component$, useStylesScoped$, useSignal } from '@builder.io/qwik';
-import styles from './form.css?inline'
+import { component$, useSignal } from '@builder.io/qwik';
+
 
 export default component$(() => {
-    useStylesScoped$(styles)
     const travelWithReturn = useSignal(false)
 
     const hoursArray = []
@@ -22,14 +21,14 @@ export default component$(() => {
                 <form class={` relative w-full mt-4 py-7 rounded-sm bg-white bg-opacity-40`} >
                     <div class='p-3 flex w-full flex-col lg:flex-row justify-between items-center gap-6'>
                         <div class="w-full">
-                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-white">Type de navette</label>
+                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-black">Type de navette</label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="US" selected>Privé</option>
                                 <option value="CA">Patagée</option>
                             </select>
                         </div>
                         <div class="w-full">
-                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-white">Nombre des passagers</label>
+                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-black">Nombre des passagers</label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="US" selected>1</option>
                                 <option value="US">2</option>
@@ -42,7 +41,7 @@ export default component$(() => {
                             </select>
                         </div>
                         <div class="w-full">
-                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-white">Nombre de bagages :</label>
+                            <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-black">Nombre de bagages :</label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="US" selected>1</option>
                                 <option value="US">2</option>
@@ -80,7 +79,7 @@ export default component$(() => {
                     </div>
                     <div class='p-3 pb-10 pt-0 bg-primary-dark flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start border-b border-b-white'>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Lieu de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Lieu de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="US" >-----</option>
                                 <option value="CA" selected>Orly</option>
@@ -88,28 +87,28 @@ export default component$(() => {
                             </select>
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Date de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Date de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
                             <input type={'date'} id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="" selected></option>
                                 {hoursArray.map((hour, index) => <option key={index} value="00:00" class="text-lg" >{hour}</option>)}
                             </select>
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">provenance de vol<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">provenance de vol<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">N° de vol<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">N° de vol<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                     </div>
                     <div class='p-3 py-7 pt-0 bg-primary-dark flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start border-b border-b-white'>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Destination<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Destination<span class='text-red-500 text-2xl'>*</span></label>
                             <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="US" >-----</option>
                                 <option value="CA" selected>Orly</option>
@@ -117,11 +116,11 @@ export default component$(() => {
                             </select>
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Adresse<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Adresse<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Code postal<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Code postal<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                     </div>
@@ -133,7 +132,7 @@ export default component$(() => {
                         </div>
                         <div class='p-3 pb-10 pt-0 bg-primary-light flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start border-b border-b-white'>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Lieu de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Lieu de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
                                 <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="US" >-----</option>
                                     <option value="CA" selected>Orly</option>
@@ -141,28 +140,28 @@ export default component$(() => {
                                 </select>
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Date de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Date de prise en charge<span class='text-red-500 text-2xl'>*</span> </label>
                                 <input type={'date'} id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Heure de prise en charge<span class='text-red-500 text-2xl'>*</span></label>
                                 <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="" selected></option>
                                     {hoursArray.map((hour, index) => <option key={index} value="00:00" class="text-lg" >{hour}</option>)}
                                 </select>
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Adresse<span class='text-red-500 text-2xl'>*</span></label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Adresse<span class='text-red-500 text-2xl'>*</span></label>
                                 <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Code postal<span class='text-red-500 text-2xl'>*</span></label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Code postal<span class='text-red-500 text-2xl'>*</span></label>
                                 <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                             </div>
                         </div>
                         <div class='p-3 py-7 pt-0 bg-primary-light flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start border-b border-b-white'>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Destination<span class='text-red-500 text-2xl'>*</span></label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Destination<span class='text-red-500 text-2xl'>*</span></label>
                                 <select id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="US" >-----</option>
                                     <option value="CA" selected>Orly</option>
@@ -170,7 +169,7 @@ export default component$(() => {
                                 </select>
                             </div>
                             <div class="w-full lg:w-1/3 px-3">
-                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-white">Heure de vol<span class='text-red-500 text-2xl'>*</span></label>
+                                <label for="countries" class="mt-5 block mb-1 text-base font-normal text-white dark:text-black">Heure de vol<span class='text-red-500 text-2xl'>*</span></label>
                                 <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                             </div>
                         </div>

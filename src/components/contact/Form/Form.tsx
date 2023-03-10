@@ -21,19 +21,19 @@ export default component$(() => {
                 <form ref={formRef} preventdefault:click onSubmit$={() => { console.log('test') }} class={`relative w-full rounded-sm bg-white bg-opacity-40`}>
                     <div class="p-3 pb-10 pt-0 flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start">
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-white">Nom<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-black">Nom<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-white">Courriel<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-black">Courriel<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
-                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-white">Téléphone<span class='text-red-500 text-2xl'>*</span></label>
+                            <label for="countries" class="mt-5 block mb-1 text-base font-normal dark:text-black">Téléphone<span class='text-red-500 text-2xl'>*</span></label>
                             <input type="text" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full px-3 mt-10">
-                            <label for="countries" class="block mb-1 text-base font-normal text-gray-600 dark:text-white">Message</label>
+                            <label for="countries" class="block mb-1 text-base font-normal text-gray-600 dark:text-black">Message</label>
                             <textarea class="h-[100px] bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5"></textarea>
                         </div>
                     </div>

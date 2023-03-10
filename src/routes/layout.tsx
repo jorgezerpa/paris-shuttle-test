@@ -1,6 +1,7 @@
 import { component$, Slot, useSignal } from '@builder.io/qwik';
-import Header from '~/components/Header/header';
-import Footer from '~/components/Footer/Footer';
+import Footer from '~/components/footer/Footer';
+import Header from '~/components/header/header';
+
 import { DrawerMobile } from '~/libs/drawerMobile/drawerMobile';
 
 
@@ -10,12 +11,12 @@ export default component$(() => {
   return (
     <div class='overflow-x-clip'>
       <main >
-        <Header showNavbar={showMobileMenu} />
+        <Header showNavbar={showMobileMenu}/>
         <section>
           <Slot />
         </section>
       </main>
-      <Footer />
+      <Footer/>
       <DrawerMobile showNavbar={showMobileMenu} />
     </div>
   );

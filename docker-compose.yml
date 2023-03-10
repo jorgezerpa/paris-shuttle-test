@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+    qwikapp:
+        container_name: WEBSITECONTAINER
+        ports:
+            - '3000:3000'
+        image: WEBSITEIMAGE
+        restart: unless-stopped
+        healthcheck:
+          test: ["CMD", "curl", "-f", "http://localhost:3000"]
+          interval: 30s
+          timeout: 5s
+          retries: 5

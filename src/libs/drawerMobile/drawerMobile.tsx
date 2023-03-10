@@ -4,13 +4,13 @@ import { Link } from '@builder.io/qwik-city';
 export const DrawerMobile = component$(({ showNavbar }: { showNavbar:{value:boolean} }) => {
   const ITEMS = [
     // { title:'Accueil', path:'/' },
-    { title:'Orly', path:'/place/orly' },
-    { title:'Disneyland', path:'/place/disneyLand' },
-    { title:'Paris', path:'/place/paris' },
-    { title:'Charles de Gaulle (CDG)', path:'/place/CDG' },
-    { title:'Beauvais', path:'/place/beauvais' },
-    { title:'Pack family', path:'/' },
-    { title:'Contact', path:'/' },
+    { title:'Orly', path:'/trajet' },
+    { title:'Disneyland', path:'/trajet' },
+    { title:'Paris', path:'/trajet' },
+    { title:'Charles de Gaulle (CDG)', path:'/trajet' },
+    { title:'Beauvais', path:'/trajet' },
+    { title:'Pack family', path:'/trajet' },
+    { title:'Contact', path:'/trajet' },
 ]
 
   return (
@@ -25,21 +25,21 @@ export const DrawerMobile = component$(({ showNavbar }: { showNavbar:{value:bool
               <div class="px-3 py-3 text-gray-500" onClick$={()=>showNavbar.value=false}>
                 <Link href={item.path} class="flex" >
                   { item.title }
-                  <img src="/icons/double-arrow.svg" width={15} alt="" />
+                    <img src="/icons/double-arrow.svg" width={15} alt="" />
                   { item.title }
                 </Link>
               </div>
               <div class="px-3 py-3 text-gray-500" onClick$={()=>showNavbar.value=false}>
                 <Link href={item.path} class="flex">
                   { item.title }
-                  <img src="/icons/double-arrow.svg" width={15} alt="" />
+                    <img src="/icons/double-arrow.svg" width={15} alt="" />
                   { item.title }
                 </Link>
               </div>
               <div class="px-3 py-3 text-gray-500" onClick$={()=>showNavbar.value=false}>
                 <Link href={item.path} class="flex">
                   { item.title }
-                  <img src="/icons/double-arrow.svg" width={15} alt="" />
+                    <img src="/icons/double-arrow.svg" width={15} alt="" />
                   { item.title }
                 </Link>
               </div>

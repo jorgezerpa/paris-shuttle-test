@@ -3,14 +3,14 @@ import { Link } from '@builder.io/qwik-city';
 
 export default component$(() => {
     const ITEMS = [
-        { title:'Accueil', path:'/accueil' },
-        { title:'Devis', path:'' },
-        { title:' Affilié', path:'' },
+        { title:'Accueil', path:'/' },
+        { title:'Devis', path:'/devis' },
+        { title:' Affilié', path:'/accounts' },
     ]
     const SOCIAL_MEDIA = [
-        { image:'/icons/facebook-square.png', path:'/' },
-        { image:'/icons/twitter-square.png', path:'/' },
-        { image:'/icons/google-plus-square.png', path:'/' },
+        { image:'/icons/facebook-square.png', path:'https://www.facebook.com/Firstshuttle/' },
+        { image:'/icons/twitter-square.png', path:'https://twitter.com/shuttle75' },
+        { image:'/icons/google-plus-square.png', path:'https://plus.google.com/u/1/b/102723066125615013586/+First-shuttle/about' },
     ]
 
 
@@ -18,14 +18,14 @@ export default component$(() => {
     <>
         <div class='bg-primary-light py-4 px-3 justify-center flex'>
             <div class='max-w-[1350px] w-full flex'>
-                <div class=" flex-1 flex justify-start gap-7 text-white text-base font-normal">
+                <div class=" flex-1 flex justify-start gap-7 text-white text-base font-normal cursor-pointer">
                     {ITEMS.map(item=>(
-                        <Link key={item.title+item.path+'footer'}>{item.title}</Link>
+                        <Link href={item.path} key={item.title+item.path+'footer'}>{item.title}</Link>
                     ))}
                 </div>
-                <div class=" flex-1 justify-end gap-7 text-white text-base font-normal hidden lg:flex">
+                <div class=" flex-1 justify-end gap-7 text-white text-base font-normal hidden lg:flex cursor-pointer">
                     {SOCIAL_MEDIA.map(item=>(
-                        <Link key={item.image+item.path+'footer'}>
+                        <Link href={item.path} target='_blank' key={item.image+item.path+'footer'}>
                             <img src={item.image} alt="" width={30} />
                         </Link>
                     ))}

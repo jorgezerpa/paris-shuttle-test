@@ -1,10 +1,9 @@
-import { component$, useStylesScoped$ } from '@builder.io/qwik';
+import { component$} from '@builder.io/qwik';
 import { DocumentHead } from '@builder.io/qwik-city';
 import Form from '~/components/devis/Form/Form';
-import styles from './index.css?inline';
 
 export default component$(() => {
-    useStylesScoped$(styles);
+   
 
     const hoursArray = []
     for (let i = 0; i < 24; i++) {
