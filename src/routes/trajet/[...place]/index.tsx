@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useSignal, useVisibleTask$, useResource$, Resource } from '@builder.io/qwik';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { useLocation } from '@builder.io/qwik-city';
 import Devis from '~/components/shared/trajet/Devis';
@@ -7,6 +7,7 @@ import OffreMap from '~/components/shared/trajet/OffreMap';
 import PackCard from '~/components/shared/trajet/PackCard';
 import Services from '~/components/shared/trajet/Services';
 import TrajetList from '~/components/shared/trajet/TrajetList';
+import { getTrajets } from '~/store/services/mainApi';
 
 
 export default component$(() => {
@@ -25,32 +26,37 @@ export default component$(() => {
     }
   })
   
+
+  const trajetsData = useResource$(async()=>{
+    return getTrajets()
+  })
+
   
   return (
     <div>
       { params.place && (
 
         <div class="flex flex-col items-center w-full mx-auto bg-white text-white  justify-center">
-
-          <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
-
-          <OffreMap charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
-
-
-          <TrajetList charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
-
-          <PackCard/>
-          
-          <Devis/>
-          <div class="flex-1 w-full">
-          <Services/> 
-          </div>
-
+          <Resource
+            value={trajetsData}
+            onResolved={(trajets:any)=>{
+              return (
+                <div class={'flex flex-col items-center w-full mx-auto bg-white text-white  justify-center'}>
+                  <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
+                  <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
+                  <TrajetList charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
+                  <PackCard/>
+                  <Devis/>
+                  <div class="flex-1 w-full">
+                  <Services/> 
+                  </div>
+                </div>
+              )
+            }}                    
+          />
 
           <div class="flex w-full justify-center mt-[30px] py-[30px] bg-[#f5f5f5]">
-
             <img src="/images/insigne.png" width={220} alt="" />
-
           </div>
 
         </div>

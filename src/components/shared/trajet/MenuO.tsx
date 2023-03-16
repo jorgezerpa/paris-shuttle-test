@@ -4,8 +4,6 @@ import { Link } from "@builder.io/qwik-city";
 
 export default component$(({charge, destination}:{charge:string, destination:string}) => {
   const context = useContext(globalContext)
-
-  console.log("MenuO", charge, destination);
   
   
   const isMobile = useSignal(false);

@@ -27,10 +27,10 @@ export const MenuElement = component$(({ item }: { item: any }) => {
 export default component$(({ isFixed = false }: { isFixed?: boolean }) => {
     const ITEMS = [
         // { title:'Accueil', path:'/' },
-        { title: 'Orly', path: '/trajet/orly', subitems: ['Paris', 'Disneyland', 'Charles de Gaulle (CDG)', 'Beauvies'] },
-        { title: 'Disneyland', path: '/trajet/dineyland', subitems: ['Paris', 'Orly', 'Charles de Gaulle (CDG)', 'Beauvies'] },
+        { title: 'Orly', path: '/trajet/orly', subitems: ['Paris', 'Disneyland', 'Charles de Gaulle (CDG)', 'Beauvais'] },
+        { title: 'Disneyland', path: '/trajet/disneyland', subitems: ['Paris', 'Orly', 'Charles de Gaulle (CDG)', 'Beauvais'] },
         { title: 'Paris', path: '/trajet/paris', subitems: ['Beauvais', 'Orly', 'Charles de Gaulle (CDG)', 'Disneyland'] },
-        { title: 'Charles de Gaulle (CDG)', path: '/trajet/cdg', subitems: ['Disneyland', 'Paris', 'Beauvies', 'Orly'] },
+        { title: 'Charles de Gaulle (CDG)', path: '/trajet/cdg', subitems: ['Disneyland', 'Paris', 'Beauvais', 'Orly'] },
         { title: 'Beauvais', path: '/trajet/beauvais', subitems: ['Disneyland', 'Orly', 'Paris', 'Charles de Gaulle (CDG)'] },
     ];
 
