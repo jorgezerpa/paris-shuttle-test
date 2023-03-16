@@ -5,10 +5,10 @@ export default component$(() => {
 
     <>
     
-    <div class="flex flex-col md:flex-row mt-[25px] mx-10 gap-10 sm:gap-30">
+    <div class="flex flex-col md:flex-row mt-[25px] mx-auto gap-10 sm:gap-30 w-full max-w-6xl ">
         {/* DetailsOffre; */}
 
-        <div class="flex-1 flex-col cursor-pointer w-full sm:min-w-[19rem] max-h-[13rem] object-cover bg-[url('/images/background_navette_privee.png')] bg-no-repeat">
+        <div class="flex-1 flex-col cursor-pointer sm:min-w-[19rem] max-h-[13rem] object-cover bg-[url('/images/background_navette_privee.png')] bg-no-repeat">
 
           <h3 class="text-xl text-[#213665] font-bold  mt-2">
             VOITURE PRIVÉE

@@ -17,7 +17,7 @@ export default component$(() => {
   return (
     <>
         <div class='bg-primary-light py-4 px-3 justify-center flex'>
-            <div class='max-w-[1350px] w-full flex'>
+            <div class='w-full max-w-6xl flex'>
                 <div class=" flex-1 flex justify-start gap-7 text-white text-base font-normal cursor-pointer">
                     {ITEMS.map(item=>(
                         <Link href={item.path} key={item.title+item.path+'footer'}>{item.title}</Link>

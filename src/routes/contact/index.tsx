@@ -17,7 +17,7 @@ export default component$(() => {
 
     return (
         <div class="flex items-center flex-col pt-5 bg-gray-200 px-3">
-            <div class="max-w-[1400px] w-full px-3 bg-white py-10">
+            <div class="max-w-6xl mx_auto w-full px-3 bg-white py-10">
                 <div class='flex justify-center w-full'>
                     <h2 class={`px-8 w-full pt-5 text-3xl text-left text-primary-dark font-thin`}>CONTACT</h2>
                 </div>

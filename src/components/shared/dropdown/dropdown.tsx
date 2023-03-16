@@ -3,7 +3,7 @@ import styles from './dropdown.css?inline';
 
 type Item = { icon?:string, title:string }
 
-export default component$(({icon, title, items}:{icon:string, title:string, items:Item[]}) => {
+export default component$(({ icon, title, items}:{icon:string, title:string, items:Item[]}) => {
   
   useStylesScoped$(styles)
   const currentItem = useSignal<Item|null>(null);
@@ -39,12 +39,13 @@ export default component$(({icon, title, items}:{icon:string, title:string, item
             duration-150 ease-in-out origin-top w-full z-50`}
           >
             {items.map((item, index)=>(
-              <li 
+              <li
               onClick$={()=>{
+                
                 currentItem.value = items[index]
                 showLanguages.value = !showLanguages.value
               }} 
-              class="bg-white flex items-center gap-2 px-1 py-1 lg:px-3 lg:py-2 hover:bg-gray-100 border-b-2 border-gray-200">
+              class="bg-white flex items-center   lg:px-3 lg:py-2 hover:bg-gray-100 border-b-2 border-gray-200">
                 {/* <span><img src={language.icon} class='w-[20px] lg:w-[22px]' alt="" /></span> */}
                 <span class="inline-block">{item.title}</span>
                 </li>

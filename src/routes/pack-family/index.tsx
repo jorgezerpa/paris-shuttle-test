@@ -30,14 +30,14 @@ export default component$(() => {
                         </div>
                     </div>
                     <div class='bg-white w-full flex flex-col lg:flex-row p-10 gap-5'>
-                        <div class="flex justify-center lg:justify-start">
+                        <div class="flex justify-center lg:justify-start max-h-[15rem] ">
                             <img src="/images/pack-image.jpg" alt="" />
                         </div>
                         <div class=''>
                             <h2 class='font-bold text-left text-primary-dark mb-4 text-xl'>
                                 ORLY ⇄ DISNEYLAND
                             </h2>
-                            <div class='max-w-[700px] text-gray-500 mb-4'>
+                            <div class='max-w-[700px]  h-auto text-gray-500 mb-4'>
                                 <p><span class="font-semibold text-[#f00]">Navette privée</span> de Orly à Disneyland en Minivan</p>
                                 <p class='font-bold'>Cette formule est  uniquement destinée aux familles composées de 2 adultes et 1 ou 2 enfants. (4 PERSONNES MAX)</p>
                                 <p class=''><span class="font-semibold text-[#f00]">Promo : 75€ ,</span> sans aucun suppléments. </p>
