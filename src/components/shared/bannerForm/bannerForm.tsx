@@ -1,171 +1,112 @@
-import { component$, useSignal, useVisibleTask$,useResource$,useStore,  Resource  } from '@builder.io/qwik';
-import { useLocation } from '@builder.io/qwik-city';
+import { component$, useSignal, $, useContext } from "@builder.io/qwik";
+import { globalContext } from "~/store/context/mainContext";
+import { Link } from "@builder.io/qwik-city";
 
-import { getTrajets } from '~/store/services/mainApi';
-import Dropdown from '../dropdown/dropdown';
+export const BannerForm = component$(({charge, destination}:{charge:string, destination:string}) => {
+  const context = useContext(globalContext)
+  
+  
+  const isMobile = useSignal(false);
+  const formRef = useSignal<HTMLFormElement>()
+  const showResults = useSignal<boolean>(false)
 
+  const handleSubmit = $(() => {
+    const formData = new FormData(formRef.value)
+    context.typeVoyage = formData.get('type_voyage') as string
+    context.charge = formData.get('prise_en_charge') as string
+    context.destination = formData.get('prise_en_destination') as string
+    context.numberOfPassengers = formData.get('nombre_de_personnes') as string
 
+    showResults.value = true
+  })
 
+  return (
 
-interface UIState {
-    depart: string;
-    destination?: string;
-    qte: number;
-  }
-
-
-export const BannerForm = component$(() => {
-
-
-
-    const state = useStore<UIState>({
-        depart: 'Orly',
-        destination: 'disneyland',
-        qte: 1,
-      });
-
-
-    const responseData = useResource$(() => {
-        //Les trajets
-        return getTrajets();
-      })
-
-
-    const places = [
-        { 'title': ' Lieu de prise en charge' },
-        { 'title': 'Orly' },
-        { 'title': 'Disneyland' },
-        { 'title': 'Paris' },
-        { 'title': 'Charles de Gaulle (CDG)' },
-        { 'title': 'Beauvais' },
-    ]
-
-
-    const destinations = [
-        { 'title': ' Destinations' },
-        { 'title': 'Orly' },
-        { 'title': 'Disneyland' },
-        { 'title': 'Paris' },
-        { 'title': 'Charles de Gaulle (CDG)' },
-        { 'title': 'Beauvais' },
-    ]
-
-    
-    const personnes = [
-        { 'title': ' Nombre de personnes' },
-        { 'title': '1' },
-        { 'title': '2' },
-        { 'title': '3' },
-        { 'title': '4' },
-        { 'title': '5' },
-        { 'title': '6' },
-        { 'title': '7' },
-        { 'title': '8' },
-    ]
-    
-
-
-    const { params: { placeSlug } } = useLocation()
-
-    const isMobile = useSignal(false)
-
-    useVisibleTask$(() => {
-        window.addEventListener('resize', () => {
-            isMobile.value = window.innerWidth < 768 ? true : false
-        })
-    })
-
-
-    return (
-
-        
-        <div class='py-10 px-0 lg:px-20 bg-center bg-no-repeat bg-cover h-[29rem]' 
-        style={{ backgroundImage: isMobile.value ? 'url(/images/visuel_mobile.jpg)' : 'url(/images/visuel_home.jpg)'}}>
-        <div class="flex hidden"> 
-                <Resource 
-                    value={responseData}
-                    onResolved={(res) => {
-                    //console.log(res)
-                    return res.map((rs:any) => {
-                        if (rs.name===state.depart && rs.destination===state.destination) {
-                            return (<>
-                            <div>
-                            <div class="mb-5"> Le prix {rs.name} {'-'} {rs.destination} est: {rs.price}</div>
-                            <a href="/devis" class='bg-[#213665] font-[Open Sans] text-white font-bold py-2 px-6 rounded-lg'>
-                                Réserver
-                            </a>
-                            </div>
-                            </>
-                            )
-                        }
-                    //return (<div>{rs.name}</div>)
-                    
-                    
-                })
-                
-            }}
-            />
-        </div>
-           
-
-
-
-            <div class="w-full max-w-6xl mx-auto py-6  text-gray-900 ">
-                <div class="drop-shadow-[2px_2px_2px_rgba(0,0,0,0.6)]">
-                    <h2 class={`text-2xl text-center lg:text-left text-white md:text-primary-dark font-bold font-['gotham-medium'] uppercase`}>SERVICE DE TRANSFERTS AUX AÉROPORTS</h2>
-                    <p class={`text-2xl text-center lg:text-left text-white md:text-primary-dark font-extralight`}>{placeSlug || 'Taxi, vtc ou van économique'}</p>
+    <>
+      <div class=' w-full bg-center bg-no-repeat bg-cover' style={{ backgroundImage: isMobile.value ? 'url(/images/visuel_mobile.jpg)' : 'url(/images/visuel_home.jpg)'}}>
+     
+          <div class="flex flex-col w-full  md:ml-auto lg:ml-8  py-4  mx-auto  items-center md:items-start justify-center ">
+              {/* formule */}
+              <div class="flex flex-col drop-shadow-[2px_2px_2px_rgba(0,0,0,0.6)] sm:mx-[30px] ml-[60px] md:items-start items-center justify-center ">
+                <span class=" text-white lg:text-4xl md:text-3xl text-2xl font-extrabold font-['gotham-medium'] uppercase ">COMMENT ALLER ENTRE</span>
+                { (destination && destination==='Charles%20de%20Gaulle%20(CDG)') && (
+                  <span class="md:text-3xl text-2xl text-white block">{charge}{ destination ?  ' et ' : "" } Charles de Gaulle(CDG) { destination ?  ' ?' : "" }</span>
+                )}
+                { (destination && destination!=='Charles%20de%20Gaulle%20(CDG)') && (
+                  <span class="md:text-3xl text-2xl text-white block">{charge}{ destination ?  ' et ' : "" } {destination || ''} { destination ?  ' ?' : "" }</span>
+                )}
+              </div>
+              
+              <form ref={formRef} class="relative bg-opacity-60 bg-white  p-10 pt-5 mt-5 rounded-[5px] border-gray-100 border-2 border-solid ml-8 lg:w-[25rem] sm:w-[36rem] w-full"> 
+                <div class={`${!showResults.value && 'hidden'} absolute top-0 left-0 bottom-0 right-0 bg-white z-50`}>
+                  <div onClick$={()=>{showResults.value=false}} class={`absolute top-1 right-1 text-black`}>close</div>
+                  <h3 class={`text-xl md:text-2xl text-center font-thin text-primary-light py-7`}>Résultats de l'estimation de prix</h3>
+                  <div class={'flex justify-between px-2'}>
+                    <p class={'text-black'}>Voiture privée : <span class={'font-bold'}>150</span> €</p>
+                    <Link href="/reservation" class={'text-primary-dark font-bold text-lg'} >Réserver</Link>
+                  </div>
                 </div>
-                <form class={` relative w-full lg:w-[400px] mt-4 py-7 px-9 lg:border border-gray-200 rounded-sm bg-white bg-opacity-40`} >
-                    <div class="flex items-center justify-start gap-5 mb-4">
-                        <div class="flex items-center">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 " />
-                            <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller simple</label>
-                        </div>
-                        <div class="flex items-center">
-                            <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller / Retour</label>
-                        </div>
-                    </div>
-                    <div class='mb-5'>
-
-                        {/* <select onChange$= {(ev)=> console.log(ev.target.value) } class="w-[155px] text-black bg-white" >
-                        
-                           {places.map((item,index)=>{
-                                <option key="index">
-
-                                    console.log(item.title)
-                                    {item.title}
-                                </option>
-                            })}
-                       
-                        </select> */}
-                        <Dropdown items={places} icon="/icons/plane.svg" title='Lieu de Prise en charge' />
-                    </div>
-                    <div class='mb-5' >
-
+                
+                <ul class="flex flex-row  w-auto md:items-start items-center justify-center">
+                  <li>
+                    <input type="radio" name="type_voyage" id="id_type_voyage_0" value={'simple'} />
+                    <label class="text-black "><span> Aller Simple</span></label>
+                  </li>
+                  <li class="ml-10 list-none">
+                    <input type="radio" name="type_voyage" id="id_type_voyage_1" value={'retour'} />
+                    <label class="text-black"><span> Aller / Retour</span></label>
+                  </li>
+                </ul>
+                <ul class="flex flex-col  md:w-[25rem] w-full">
+                  <li class="flex px-2 items-center border-gray-300 border-[1px] border-solid mt-3 lg:w-[20rem] md:w-full">
+                    <img  class=" w-[22px] text-white relative z-300" src="/icons/avion.png" alt="icon avion" />
                     
-
-                        <Dropdown items={destinations} icon="/icons/place.svg" title='Destination' />
-                    </div>
-                    <div class='mb-5'>
-                        <Dropdown items={personnes} icon="/icons/people.svg" title='Nombre des Personnes' />
-                    </div>
-                    <div class="flex justify-center w-full">
-                    <button  onSubmit$={() =>  console.log('salut')} type="submit" class='bg-primary-dark hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg'>
-                            Calculer
-                    </button>
-                    </div>
+                    <select id="id_prise_en_charge" name="prise_en_charge" class="text-black h-[34px]  w-[32rem] md:w-full">
+                      <option selected={'no-charge'.includes(charge.toLocaleLowerCase())} value="">Lieu de prise en charge</option>
+                      <option selected={'orly'.includes(charge.toLocaleLowerCase())} value="orly">Orly</option>
+                      <option selected={'disneyland'.includes(charge.toLocaleLowerCase())} value="dineyland">Disneyland</option>
+                      <option selected={'paris'.includes(charge.toLocaleLowerCase())} value="paris">Paris</option>
+                      <option selected={'cdg'.includes(charge.toLocaleLowerCase())} value="cdg">Charles de Gaulle (CDG)</option>
+                      <option selected={'beauvais'.includes(charge.toLocaleLowerCase())} value="beauvais">Beauvais</option>
+                    </select>
+                  </li>
+                  <li class="flex px-2 items-center border-gray-300 border-[1px] border-solid mt-3 lg:w-[20rem]  md:w-full">
+                    <img class="w-[15px]" src="/icons/marker.png" alt="icon marker" />
+                    <select id="id_prise_en_charge" name="prise_en_destination" class="text-black bg-transparent h-[34px]  w-[32rem] md:w-full">
+                      <option selected={destination ? 'no-destination'.includes(destination.toLocaleLowerCase()) : false} value="">destination</option>
+                      <option selected={destination ? 'paris'.includes(destination.toLocaleLowerCase()) : false} value="paris">Paris</option>
+                      <option selected={destination ? 'orly'.includes(destination.toLocaleLowerCase()) : false} value="orly">Orly</option>
+                      <option selected={destination ? 'disneyland'.includes(destination.toLocaleLowerCase()) : false} value="disneyland">Disneyland</option>
+                      <option selected={destination ? 'charles%20de%20gaulle%20(cdg)'.includes(destination.toLocaleLowerCase()) : false} value="cdg"> Charles de Gaulle (CDG)</option>
+                      <option selected={destination ? 'beauvais'.includes(destination.toLocaleLowerCase()) : false} value="beauvais"> Beauvais</option>
+                    </select>
+                  </li>
+                  <li class="flex flex-1 items-center px-2 border-gray-300 border-[1px] border-solid mt-3  lg:w-[20rem] md:w-full" >
+                  
+                    <img class="w-[22px]"  src="/icons/passegers.png" alt="icon passagers" />
                     
-                </form>
-
+                      <select id="id_prise_en_charge" name="nombre_de_personnes" class="text-black  bg-transparent h-[34px] w-[32rem]  md:w-full">
+                        <option value="" >Nombre de personnes</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4"> 4</option>
+                        <option value="5"> 5</option>
+                        <option value="6"> 6</option>
+                        <option value="7"> 7</option>
+                        <option value="8"> 8</option>
+                      </select>
+                  </li>
+                </ul>
+                <div class=" flex items-center justify-center">
+                  <button type="button" onClick$={handleSubmit} class="p-1 px-5 rounded-md bg-[#213665] text-white font-bold flex mt-8  ">CALCULER</button>
+                </div>
+              </form>
+              
+                
             </div>
-        </div>
+      </div>
+  </>
 
-
-        
-    
-
-    )
-
-
+);
 });

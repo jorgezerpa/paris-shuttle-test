@@ -2,12 +2,13 @@ import { component$, useSignal, useVisibleTask$, useResource$, Resource } from '
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { useLocation } from '@builder.io/qwik-city';
 import Devis from '~/components/shared/trajet/Devis';
-import MenuO from '~/components/shared/trajet/MenuO';
+// import MenuO from '~/components/shared/trajet/MenuO';
 import OffreMap from '~/components/shared/trajet/OffreMap';
 import PackCard from '~/components/shared/trajet/PackCard';
 import Services from '~/components/shared/trajet/Services';
 import TrajetList from '~/components/shared/trajet/TrajetList';
 import { getTrajets } from '~/store/services/mainApi';
+import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
 
 
 export default component$(() => {
@@ -42,7 +43,8 @@ export default component$(() => {
             onResolved={(trajets:any)=>{
               return (
                 <div class={'flex flex-col items-center w-full mx-auto bg-white text-white  justify-center'}>
-                  <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
+                  <BannerForm charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}  />
+                  {/* <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/> */}
                   <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
                   <TrajetList trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
                   <PackCard/>

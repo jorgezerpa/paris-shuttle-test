@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead } from '@builder.io/qwik-city';
+import type { DocumentHead } from '@builder.io/qwik-city';
 import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
 
 
@@ -7,7 +7,7 @@ export default component$(() => {
   
   return (
     <div class=''>
-      <BannerForm />
+      <BannerForm charge={'no-charge'} destination={'no-destination'} />
 
       <div class="md:px-1 px-5 w-full  max-w-6xl mx-auto">
         <div class="w-full py-10 flex items-center justify-center gap-10 lg:flex-row flex-col">
