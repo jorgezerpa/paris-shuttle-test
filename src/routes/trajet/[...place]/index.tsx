@@ -44,7 +44,7 @@ export default component$(() => {
                 <div class={'flex flex-col items-center w-full mx-auto bg-white text-white  justify-center'}>
                   <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
                   <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
-                  <TrajetList charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
+                  <TrajetList trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
                   <PackCard/>
                   <Devis/>
                   <div class="flex-1 w-full">
