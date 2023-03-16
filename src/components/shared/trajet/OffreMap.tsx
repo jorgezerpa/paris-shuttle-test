@@ -26,12 +26,20 @@ export default component$(({charge, destination, trajets}:{charge:string, destin
     <>
       <div class="flex flex-col mx-[3rem] bg-white mt-[10px] sm:mx-10">        
         {/* InfoOffre; */}
-        <h4 class="sm:text-2xl leading-8 text-xl text-[#213665] font-bold md:w-3/5 sm:w-full  border-b-[1px] border-solid border-[#213665] mt-2">
-        { destination 
-          ? charge +'⇄' + destination  
-          : 'TRANSFERT DEPUIS OU VERS ' + charge
-        }
-        </h4>
+        {destination && (
+          <h4 class="sm:text-2xl leading-8 text-xl text-[#213665] font-bold md:w-3/5 sm:w-full  border-b-[1px] border-solid border-[#213665] mt-2">
+          { destination==='Charles%20de%20Gaulle%20(CDG)' 
+            ? charge +'⇄' + 'Charles de Gaulle(CDG)'  
+            : (charge==='cdg'?'Charles de Gaulle(CDG)':charge) +'⇄' + destination
+          }
+          </h4>
+        )}
+        {!destination && (
+          <h4 class="sm:text-2xl leading-8 text-xl text-[#213665] font-bold md:w-3/5 sm:w-full  border-b-[1px] border-solid border-[#213665] mt-2">
+            {charge==='cdg' && 'TRANSFERT DEPUIS OU VERS ' + 'Charles de Gaulle(CDG)'}
+            {charge!=='cdg' && 'TRANSFERT DEPUIS OU VERS ' + charge}
+          </h4>
+        )}
 
         <div class="flex flex-col sm:flex-col  md:flex-col lg:flex-row gap-5">
           <p class="text-black font-opensans font-normal text-base lg:w-3/5 w-full mt-4 ">

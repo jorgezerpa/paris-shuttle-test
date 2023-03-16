@@ -29,7 +29,12 @@ export default component$(({charge, destination}:{charge:string, destination:str
               {/* formule */}
               <div class="flex flex-col drop-shadow-[2px_2px_2px_rgba(0,0,0,0.6)] sm:mx-[30px] ml-[60px] md:items-start items-center justify-center ">
                 <span class=" text-white lg:text-4xl md:text-3xl text-2xl font-extrabold font-['gotham-medium'] uppercase ">COMMENT ALLER ENTRE</span>
-                <span class="md:text-3xl text-2xl text-white block">{charge}{ destination ?  ' et ' : "" } {destination || ''} { destination ?  ' ?' : "" }</span>
+                { (destination && destination==='Charles%20de%20Gaulle%20(CDG)') && (
+                  <span class="md:text-3xl text-2xl text-white block">{charge}{ destination ?  ' et ' : "" } Charles de Gaulle(CDG) { destination ?  ' ?' : "" }</span>
+                )}
+                { (destination && destination!=='Charles%20de%20Gaulle%20(CDG)') && (
+                  <span class="md:text-3xl text-2xl text-white block">{charge}{ destination ?  ' et ' : "" } {destination || ''} { destination ?  ' ?' : "" }</span>
+                )}
               </div>
               
               <form ref={formRef} class="relative bg-opacity-60 bg-white  p-10 pt-5 mt-5 rounded-[5px] border-gray-100 border-2 border-solid ml-8 lg:w-[25rem] sm:w-[36rem] w-full"> 
