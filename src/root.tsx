@@ -9,7 +9,8 @@ export default component$(() => {
     charge:'',
     destination:'',
     numberOfPassengers:'',
-    typeVoyage:''
+    typeVoyage:'',
+    language:'fr'
   })
   useContextProvider(globalContext, mainContext)
 

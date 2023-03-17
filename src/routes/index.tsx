@@ -1,9 +1,20 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useTask$, useSignal, useContext } from '@builder.io/qwik';
+import { globalContext } from '~/store/context/mainContext';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
 
-
 export default component$(() => {
+  const context = useContext(globalContext)
+  const languageData = useSignal<any>({test:'fr'}) //here is all the json dta for each lang
+
+  useTask$(({track})=>{
+    track(()=>context.language) 
+    fetch(`http://localhost:5173/translations/${context.language}.json`)
+      .then(data => data.json())
+      .then(data => languageData.value = data)
+      .catch(e=>console.log(e))
+  })
+
   
   return (
     <div class=''>

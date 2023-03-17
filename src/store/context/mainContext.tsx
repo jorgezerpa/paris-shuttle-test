@@ -7,7 +7,8 @@ export type GlobalContext = {
   numberOfPassengers:string
   typeVoyage:string
   charge:string
-  destination:string
+  destination:string,
+  language:'en'|'fr'|'it'|'es'
 
 };
 
