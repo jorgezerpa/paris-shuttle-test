@@ -122,7 +122,7 @@ export default component$(() => {
                             <select name="lieu_de_prise_charge" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                 <option value="" >-----</option>
                                 <option selected={context.charge==='orly'} value="orly">Orly</option>
-                                <option selected={context.charge==='dineyland'} value="disneyland">Disneyland</option>
+                                <option selected={context.charge==='disneyland'} value="disneyland">Disneyland</option>
                                 <option selected={context.charge==='paris'} value="paris">Paris</option>
                                 <option selected={context.charge==='cdg'} value="cdg">Charles de Gaulle</option>
                                 <option selected={context.charge==='beauvais'} value="beauvais">Beauvais</option>
@@ -154,7 +154,7 @@ export default component$(() => {
                             <select name="destination" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                             <option value="" >-----</option>
                                 <option selected={context.destination==='orly'} value="orly">Orly</option>
-                                <option selected={context.destination==='dineyland'} value="disneyland">Disneyland</option>
+                                <option selected={context.destination==='disneyland'} value="disneyland">Disneyland</option>
                                 <option selected={context.destination==='paris'} value="paris">Paris</option>
                                 <option selected={context.destination==='cdg'} value="cdg">Charles de Gaulle</option>
                                 <option selected={context.destination==='beauvais'} value="beauvais">Beauvais</option>
@@ -181,7 +181,7 @@ export default component$(() => {
                                 <select name="lieu_de_prise_charge_retour" id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="" >-----</option>
                                     <option selected={context.destination==='orly'} value="orly">Orly</option>
-                                    <option selected={context.destination==='dineyland'} value="disneyland">Disneyland</option>
+                                    <option selected={context.destination==='disneyland'} value="disneyland">Disneyland</option>
                                     <option selected={context.destination==='paris'} value="paris">Paris</option>
                                     <option selected={context.destination==='cdg'} value="cdg">Charles de Gaulle</option>
                                     <option selected={context.destination==='beauvais'} value="beauvais">Beauvais</option>
@@ -213,7 +213,7 @@ export default component$(() => {
                                 <select name='destination_retour' id="countries" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5">
                                     <option value="" >-----</option>
                                     <option selected={context.charge==='orly'} value="orly">Orly</option>
-                                    <option selected={context.charge==='dineyland'} value="disneyland">Disneyland</option>
+                                    <option selected={context.charge==='disneyland'} value="disneyland">Disneyland</option>
                                     <option selected={context.charge==='paris'} value="paris">Paris</option>
                                     <option selected={context.charge==='cdg'} value="cdg">Charles de Gaulle</option>
                                     <option selected={context.charge==='beauvais'} value="beauvais">Beauvais</option>

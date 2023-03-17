@@ -1,9 +1,10 @@
-import { component$, useSignal, useStylesScoped$, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useSignal, useStylesScoped$, useVisibleTask$, $ } from '@builder.io/qwik';
+import type { PropFunction } from '@builder.io/qwik';
 import styles from './dropdown.css?inline';
 
 type Item = { icon?:string, title:string, key?:string }
 
-export default component$(({ icon, title, items, defaultValue}:{icon:string, title:string, items:Item[], defaultValue?:string}) => {
+export default component$(({ icon, title, items, defaultValue, itemClickHandler=$(()=>{}) }:{itemClickHandler?:PropFunction<(currentItem:any)=>void>, icon:string, title:string, items:Item[], defaultValue?:string}) => {
   useStylesScoped$(styles)
   const currentItem = useSignal<Item|null>(null);
   const showItems = useSignal(false);
@@ -51,9 +52,9 @@ export default component$(({ icon, title, items, defaultValue}:{icon:string, tit
             {items.map((item, index)=>(
               <li
               onClick$={()=>{
-                
                 currentItem.value = items[index]
                 showItems.value = !showItems.value
+                itemClickHandler(currentItem.value)
               }} 
               class="bg-white flex items-center   lg:px-3 lg:py-2 hover:bg-gray-100 border-b-2 border-gray-200">
                 {/* <span><img src={language.icon} class='w-[20px] lg:w-[22px]' alt="" /></span> */}
