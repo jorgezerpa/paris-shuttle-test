@@ -1,4 +1,5 @@
 import { component$, useResource$, Resource } from '@builder.io/qwik';
+import parse from 'html-react-parser';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { getPacks } from '~/store/services/mainApi';
 
@@ -15,7 +16,6 @@ export default component$(() => {
                 <Resource 
                     value={packsData}
                     onResolved={(packs)=>{
-                        console.log(packs)
                         return (
                         <div class="w-full max-w-[1400px] flex flex-col gap-10 px-5 sm:px-14">
                             {packs.map(pack=>(
@@ -28,7 +28,7 @@ export default component$(() => {
                                             { pack.depart } ⇄ { pack.destination }
                                         </h2>
                                         <div class='max-w-[700px] text-gray-500 mb-4'>
-                                            { pack.description }
+                                            { parse(pack.description) }
                                         <p><span class="text-[#f00]">Prix :<span class='font-bold'>{ pack.price } € </span></span></p>
                                         </div>
 
