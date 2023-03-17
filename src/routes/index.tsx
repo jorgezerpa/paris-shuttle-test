@@ -1,4 +1,5 @@
 import { component$, useTask$, useSignal, useContext } from '@builder.io/qwik';
+import { useLocation } from '@builder.io/qwik-city';
 import { globalContext } from '~/store/context/mainContext';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
@@ -24,11 +25,13 @@ export const HomeLanguageObjectDefault:HomeLanguageObject =  {
 
 export default component$(() => {
   const context = useContext(globalContext)
+  const { href } = useLocation();
   const languageData = useSignal<HomeLanguageObject>(HomeLanguageObjectDefault) //here is all the json dta for each lang
 
   useTask$(({track})=>{
-    track(()=>context.language) 
-    fetch(`http://localhost:5173/translations/${context.language}.json`)
+    track(()=>context.language)
+    console.log(href) 
+    fetch(`${href}translations/${context.language}.json`)
       .then(data => data.json())
       .then(data => languageData.value = data.home as HomeLanguageObject)
       .catch(e=>console.log(e))
