@@ -30,17 +30,15 @@ export default component$(() => {
 
   useTask$(({track})=>{
     track(()=>context.language)
-    console.log(href) 
     fetch(`${href}translations/${context.language}.json`)
       .then(data => data.json())
       .then(data => languageData.value = data.home as HomeLanguageObject)
-      .catch(e=>console.log(e))
   })
 
   
   return (
     <div class=''>
-      <BannerForm charge={'no-charge'} destination={'no-destination'} />
+      <BannerForm />
 
       <div class="md:px-1 px-5 w-full  max-w-6xl mx-auto">
         <div class="w-full py-10 flex items-center justify-center gap-10 lg:flex-row flex-col">

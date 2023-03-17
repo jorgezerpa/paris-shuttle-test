@@ -5,8 +5,6 @@ import { getTrajets } from '~/store/services/mainApi';
 import Dropdown from '../dropdown/dropdown';
 
 
-
-
 interface UIState {
     depart: string;
     destination?: string;
@@ -32,22 +30,22 @@ export const BannerForm = component$(() => {
 
 
     const places = [
-        { 'title': ' Lieu de prise en charge' },
-        { 'title': 'Orly' },
-        { 'title': 'Disneyland' },
-        { 'title': 'Paris' },
-        { 'title': 'Charles de Gaulle (CDG)' },
-        { 'title': 'Beauvais' },
+        { 'key':'', 'title': ' Lieu de prise en charge' },
+        { 'key':'orly', 'title': 'Orly' },
+        { 'key':'disneyland', 'title': 'Disneyland' },
+        { 'key':'paris', 'title': 'Paris' },
+        { 'key':'cdg', 'title': 'Charles de Gaulle (CDG)' },
+        { 'key':'beauvais', 'title': 'Beauvais' },
     ]
 
 
     const destinations = [
-        { 'title': ' Destinations' },
-        { 'title': 'Orly' },
-        { 'title': 'Disneyland' },
-        { 'title': 'Paris' },
-        { 'title': 'Charles de Gaulle (CDG)' },
-        { 'title': 'Beauvais' },
+        { 'key':'', 'title': ' Destinations' },
+        { 'key':'orly', 'title': 'Orly' },
+        { 'key':'disneyland', 'title': 'Disneyland' },
+        { 'key':'paris', 'title': 'Paris' },
+        { 'key':'cdg', 'title': 'Charles de Gaulle (CDG)' },
+        { 'key':'beauvais', 'title': 'Beauvais' },
     ]
 
     
@@ -65,7 +63,7 @@ export const BannerForm = component$(() => {
     
 
 
-    const { params: { placeSlug } } = useLocation()
+    const { params: { place } } = useLocation()
 
     const isMobile = useSignal(false)
 
@@ -81,7 +79,7 @@ export const BannerForm = component$(() => {
         
         <div class='py-10 px-0 lg:px-20 bg-center bg-no-repeat bg-cover h-[29rem]' 
         style={{ backgroundImage: isMobile.value ? 'url(/images/visuel_mobile.jpg)' : 'url(/images/visuel_home.jpg)'}}>
-        <div class="flex hidden"> 
+        <div class="flex"> 
                 <Resource 
                     value={responseData}
                     onResolved={(res) => {
@@ -98,11 +96,7 @@ export const BannerForm = component$(() => {
                             </>
                             )
                         }
-                    //return (<div>{rs.name}</div>)
-                    
-                    
                 })
-                
             }}
             />
         </div>
@@ -113,45 +107,35 @@ export const BannerForm = component$(() => {
             <div class="w-full max-w-6xl mx-auto py-6  text-gray-900 ">
                 <div class="drop-shadow-[2px_2px_2px_rgba(0,0,0,0.6)]">
                     <h2 class={`text-2xl text-center lg:text-left text-white md:text-primary-dark font-bold font-['gotham-medium'] uppercase`}>SERVICE DE TRANSFERTS AUX AÉROPORTS</h2>
-                    <p class={`text-2xl text-center lg:text-left text-white md:text-primary-dark font-extralight`}>{placeSlug || 'Taxi, vtc ou van économique'}</p>
+                    <p class={`text-2xl text-center lg:text-left text-white md:text-primary-dark font-extralight`}>{place || 'Taxi, vtc ou van économique'}</p>
                 </div>
-                <form class={` relative w-full lg:w-[400px] mt-4 py-7 px-9 lg:border border-gray-200 rounded-sm bg-white bg-opacity-40`} >
+                <form preventdefault:submit class={` relative w-full lg:w-[400px] mt-4 py-7 px-9 lg:border border-gray-200 rounded-sm bg-white bg-opacity-40`} >
                     <div class="flex items-center justify-start gap-5 mb-4">
                         <div class="flex items-center">
-                            <input id="default-radio-1" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 " />
-                            <label for="default-radio-1" class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller simple</label>
+                            <input  type="radio" value=""  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 " />
+                            <label  class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller simple</label>
                         </div>
                         <div class="flex items-center">
-                            <input id="default-radio-2" type="radio" value="" name="default-radio" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
-                            <label for="default-radio-2" class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller / Retour</label>
+                            <input  type="radio" value=""  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                            <label  class="ml-2 text-sm font-normal text-gray-900 dark:text-black">Aller / Retour</label>
                         </div>
                     </div>
                     <div class='mb-5'>
 
-                        {/* <select onChange$= {(ev)=> console.log(ev.target.value) } class="w-[155px] text-black bg-white" >
-                        
-                           {places.map((item,index)=>{
-                                <option key="index">
-
-                                    console.log(item.title)
-                                    {item.title}
-                                </option>
-                            })}
-                       
-                        </select> */}
-                        <Dropdown items={places} icon="/icons/plane.svg" title='Lieu de Prise en charge' />
+                    
+                        <Dropdown items={places} icon="/icons/plane.svg" title='Lieu de Prise en charge' defaultValue={(place && place.split('/')[0])?place.split('/')[0]:''} />
                     </div>
                     <div class='mb-5' >
 
                     
 
-                        <Dropdown items={destinations} icon="/icons/place.svg" title='Destination' />
+                        <Dropdown items={destinations} icon="/icons/place.svg" title='Destination' defaultValue={(place && place.split('/')[1])?place.split('/')[1]:''}  />
                     </div>
                     <div class='mb-5'>
                         <Dropdown items={personnes} icon="/icons/people.svg" title='Nombre des Personnes' />
                     </div>
                     <div class="flex justify-center w-full">
-                    <button  onSubmit$={() =>  console.log('salut')} type="submit" class='bg-primary-dark hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg'>
+                    <button  onSubmit$={() => console.log('salut')} type="submit" class='bg-primary-dark hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg'>
                             Calculer
                     </button>
                     </div>
@@ -160,10 +144,6 @@ export const BannerForm = component$(() => {
 
             </div>
         </div>
-
-
-        
-    
 
     )
 
