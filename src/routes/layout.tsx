@@ -23,7 +23,13 @@ export default component$(() => {
 
   return (
     <div class='overflow-x-clip'>
-      <Header showNavbar={showMobileMenu}/>
+      {/* NOT REMOVE 2 HEADER!! One is absolute positioned, the other gives the space in the DOM */}
+      <div class={'opacity-0'}>
+        <Header showNavbar={showMobileMenu}/>
+      </div>
+      <div class={'absolute top-0 left-0 right-0 z-50'}>
+        <Header showNavbar={showMobileMenu}/>
+      </div>
       { isNavigating && (
         <div class={'text-xl text-black min-h-screen justify-center items-center flex'}>
           <div class="lds-facebook"><div></div><div></div><div></div></div>
