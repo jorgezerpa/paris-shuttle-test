@@ -38,7 +38,9 @@ export default component$(() => {
   
   return (
     <div class=''>
-      <BannerForm />
+      <div class={'w-full'}>
+        <BannerForm />
+      </div>
 
       <div class="md:px-1 px-5 w-full  max-w-6xl mx-auto">
         <div class="w-full py-10 flex items-center justify-center gap-10 lg:flex-row flex-col">

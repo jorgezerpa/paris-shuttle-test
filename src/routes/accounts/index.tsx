@@ -10,7 +10,9 @@ export default component$(() => {
   
   return (
     <div class=''>
-      <BannerForm charge="no-charge" destination="no-destination" />
+      <div class={'w-full'}>
+        <BannerForm />
+      </div>
 
 
       <div class="flex items-center w-full mx-auto flex-col">
