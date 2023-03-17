@@ -1,3 +1,12 @@
 {
-    "test":"fr"
+    "home": {
+        "title":"TRANSFERTS ENTRE LES AÉROPORTS, PARIS ET DINEYLAND.",
+        "description":"Notre site vous propose des solutions de transfert (navette privée, voiture avec chauffeur privé, navette partagée, taxi sur mesure) entre les différents aéroports de Paris, Charles de gaulle, Orly et Beauvais afin d'eviter les attentes aux bus, trains et autres taxi onéreux.",
+        "packsTitle":"NOS PACK FAMILY DISNEYLAND.",
+        "privateCarTitle":"VOITURE PRIVÉE",
+        "privateCarItems":["Service Chauffeur","Départ immédiat","Voyagez seul à bord","Service de porte à porte","Chauffeur Professionnel"],
+        "privateVANTitle":"VAN Privé",
+        "privateVANItems":["Service Confortable","Service porte à porte","Siège bébé","Idéal pour les groupes","Navette de 8 personnes"]
+    
+    }
 }
