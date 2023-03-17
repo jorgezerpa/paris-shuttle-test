@@ -43,7 +43,7 @@ export default component$(() => {
               return (
                 <div class={'flex flex-col items-center w-full mx-auto bg-white text-white  justify-center'}>
                   <BannerForm charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}  />
-                  <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
+                  <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : 'no-charge'} destination={params.place ? params.place.split('/')[1] : 'no-destination'}/>
                   <TrajetList trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
                   <PackCard/>
                   <Devis/>

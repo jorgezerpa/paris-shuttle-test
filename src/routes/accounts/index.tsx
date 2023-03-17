@@ -6,11 +6,11 @@ import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
 export default component$(() => {
 
   const { handleSubmit } = useCF7Form({ siteUrl: 'siteUrl', formId: 'FormID' });
-    const formRef = useSignal<HTMLFormElement>();
+  const formRef = useSignal<HTMLFormElement>();
   
   return (
     <div class=''>
-      <BannerForm />
+      <BannerForm charge="no-charge" destination="no-destination" />
 
 
       <div class="flex items-center w-full mx-auto flex-col">

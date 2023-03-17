@@ -2,6 +2,8 @@ import axios from "axios"
 
 const baseUrl = "http://wp-api.first-travel.solvr.fr/wp-json";
 
+
+//TRAJETS
 export const getTrajets = async () => {
     try {
         const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`);
@@ -12,6 +14,7 @@ export const getTrajets = async () => {
     }
 }
 
+//USERS
 export const createUser = async (user:any) => {
     try {
         const result = await axios.post(`${baseUrl}/wp/v2/users`, user, { auth: { username:'', password:'' } });
@@ -21,6 +24,19 @@ export const createUser = async (user:any) => {
         return []
     }
 }
+
+
+//PACKS FAMILY
+export const getPacks = async () => {
+    try {
+        const result = await axios.get(`${baseUrl}/wp/v2/products/family/pack`);
+        // console.log(result.data.data[0])
+        return result.data.data as any[]
+    } catch (error) {
+        return []
+    }
+}
+
 
 
 //Orders and reservation

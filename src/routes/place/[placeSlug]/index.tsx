@@ -6,7 +6,7 @@ import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
 export default component$(() => {
   return (
     <div class=''>
-      <BannerForm />
-    </div>
+      <BannerForm charge='no-charge' destination='no-destination' />
+    </div> 
   );
 });
