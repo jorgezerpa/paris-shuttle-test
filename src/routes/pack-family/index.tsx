@@ -1,5 +1,5 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik';
-import parse from 'html-react-parser';
+import { component$, useResource$, Resource, JSXChildren } from '@builder.io/qwik';
+import { parse } from 'node-html-parser';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { getPacks } from '~/store/services/mainApi';
 
@@ -27,8 +27,8 @@ export default component$(() => {
                                         <h2 class='font-bold text-left text-primary-dark mb-4 text-xl'>
                                             { pack.depart } ⇄ { pack.destination }
                                         </h2>
-                                        <div class='max-w-[700px] text-gray-500 mb-4'>
-                                            { parse(pack.description) }
+                                        <div class='max-w-[700px] text-gray-500 mb-4' dangerouslySetInnerHTML={pack.description}>
+                                            {/* { (()=>parse(pack.description))() } */}
                                         <p><span class="text-[#f00]">Prix :<span class='font-bold'>{ pack.price } € </span></span></p>
                                         </div>
 
