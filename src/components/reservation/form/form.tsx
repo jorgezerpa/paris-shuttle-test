@@ -1,9 +1,11 @@
 import { component$, useSignal, $, useContext, useVisibleTask$ } from '@builder.io/qwik';
+import { useSubmitForm } from '~/hooks/useSubmitForm';
 import { globalContext } from '~/store/context/mainContext';
 import { createOrder } from '~/store/services/mainApi';
 
 export default component$(() => {
     const context = useContext(globalContext)
+    const { handleSubmit, isError, isLoading, isSuccess } = useSubmitForm($(createOrder))
     const travelWithReturn = useSignal<boolean>()
     const formRef = useSignal<HTMLFormElement>()
 
@@ -21,43 +23,11 @@ export default component$(() => {
         }
     }
 
-    const handleSubmit = $(async()=>{
-        const formData = new FormData(formRef.value)
-
-        const orderData = {
-            "type_voyage":  formData.get("type_voyage"),
-            "lieu_de_prise_charge": formData.get("lieu_de_prise_charge"),
-            "date_de_prise_charge": formData.get("date_de_prise_charge"),
-            "heure_de_prise_charge": formData.get("heure_de_prise_charge"),
-            "provenance_vol": formData.get("provenance_vol"),
-            "numero_vol": formData.get("numero_vol"),
-            "nom": formData.get(""),
-            "prenom": formData.get("nom"),
-            "email": formData.get("email"),
-            "phone": formData.get("phone"),
-            "type_navette": formData.get("type_navette"),
-            "nombre_passagers": formData.get("nombre_passagers"),
-            "nombre_bagage": formData.get("nombre_bagage"),
-            "destination": formData.get("destination"),
-            "adresse": formData.get("adresse"),
-            "code_postal": formData.get("code_postal"),
-            "hotel": formData.get("hotel"),
-            "lieu_de_prise_charge_retour": formData.get("lieu_de_prise_charge_retour"),
-            "destination_retour": formData.get("destination_retour"),
-            "date_de_prise_charge_retour": formData.get("date_de_prise_charge_retour"),
-            "heure_de_prise_charge_retour": formData.get("heure_de_prise_charge_retour")
-          }
-        
-          const createOrderResult = await createOrder(orderData)
-          console.log(createOrderResult)
-          console.log('order created')
-    })
-
 
     return (
         <div class="flex items-center flex-col">
             <div class=" w-full px-3">
-                <form ref={formRef} class={` relative w-full mt-4 py-7 rounded-sm bg-white bg-opacity-40`} >
+                <form preventdefault:submit onSubmit$={()=>formRef.value && handleSubmit(formRef.value)} ref={formRef} class={` relative w-full mt-4 py-7 rounded-sm bg-white bg-opacity-40`} >
                     <div class='p-3 flex w-full flex-col lg:flex-row justify-between items-center gap-6'>
                         <div class="w-full">
                             <label for="countries" class="block mb-1 text-base font-normarl text-gray-600 dark:text-black">Type de navette</label>
@@ -254,12 +224,19 @@ export default component$(() => {
                     </div>
 
 
-
-                    <div class="flex justify-center w-full py-10">
-                        <button onClick$={handleSubmit} type='button' class='bg-primary-dark hover:bg-primary-dark text-white font-bold py-2 px-6 rounded-lg'>
-                            PASSE LA COMMANDE
-                        </button>
+                    <div class="flex flex-col justify-center items-center w-full py-10 px-7">
+                        { isLoading 
+                            ? <div>enviant</div> 
+                            : (
+                                <button type="submit" class="bg-primary-dark font-bold py-2 px-6 text-white rounded-lg hover:bg-primary-dark">
+                                    PASSE LA COMMANDE
+                                </button>
+                            )
+                        }
+                        { isError &&  <div>une erreur se produit. essayer à nouveau</div>}
+                        { isSuccess &&  <div>envoyé avec succès</div>}    
                     </div>
+
                 </form>
             </div>
         </div>
