@@ -1,7 +1,8 @@
 import { useStore, $ } from "@builder.io/qwik";
-//import axios from 'axios';
+import type { PropFunction } from "@builder.io/qwik";
 
-export function useCF7Form({ siteUrl, formId }: { siteUrl: string, formId: string }) {
+//submitHandler => function that make the request (return a promise)
+export function useSubmitForm( submitHandler : PropFunction<(data: FormData) => Promise<any>> ) {
 
     const queryStatus = useStore<{ isLoading: boolean, isError: boolean, isSuccess: boolean, result: any }>({
         isLoading: false,
@@ -10,18 +11,16 @@ export function useCF7Form({ siteUrl, formId }: { siteUrl: string, formId: strin
         result: null
     });
 
-    console.log({siteUrl, formId});
-
     const handleSubmit = $(async (form: HTMLFormElement) => {
         try {
             queryStatus.isLoading = true;
-            //const URL = `${siteUrl}/wp-json/contact-form-7/v1/contact-forms/${formId}/feedback/`;
             const formData = new FormData(form);
-
-            await console.log("Form Submitted ", formData);
+            const result = await submitHandler(formData)
+            console.log("Form Submitted ", result);
             queryStatus.isLoading = false;
             queryStatus.isSuccess = true;
         } catch (error) {
+            console.log(error)
             queryStatus.isLoading = false;
             queryStatus.isError = true;
         }
