@@ -18,7 +18,7 @@ export default component$(() => {
     const handleSubmit = $(async()=>{
         try {
             const formData = new FormData(formRef.value)
-            const createOrderResult = await submitContactForm(formData)
+            const createContactResult = await submitContactForm(formData)
             console.log('success')
         } catch (error) {
             console.log(error)
