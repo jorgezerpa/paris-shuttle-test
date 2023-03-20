@@ -23,19 +23,19 @@ export default component$(() => {
                     <div class="p-3 pb-10 pt-0 flex w-full flex-col lg:flex-row justify-between flex-wrap items-center lg:justify-start">
                         <div class="w-full lg:w-1/3 px-3">
                             <label for="nom" class="mt-5 block mb-1 text-base font-normal dark:text-black">Nom<span class='text-red-500 text-2xl'>*</span></label>
-                            <input name="fullname" type="text" id="nom" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
+                            <input required name="fullname" type="text" id="nom" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
                             <label for="courriel" class="mt-5 block mb-1 text-base font-normal dark:text-black">Courriel<span class='text-red-500 text-2xl'>*</span></label>
-                            <input name="email" type="text" id="courriel" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
+                            <input required name="email" type="text" id="courriel" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full lg:w-1/3 px-3">
                             <label for="telephone" class="mt-5 block mb-1 text-base font-normal dark:text-black">Téléphone<span class='text-red-500 text-2xl'>*</span></label>
-                            <input name="subject" type="text" id="telephone" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
+                            <input required name="subject" type="text" id="telephone" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5" />
                         </div>
                         <div class="w-full px-3 mt-10">
                             <label for="message" class="block mb-1 text-base font-normal text-gray-600 dark:text-black">Message</label>
-                            <textarea name="message" id="message" class="h-[100px] bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5"></textarea>
+                            <textarea required name="message" id="message" class="h-[100px] bg-gray-100 border border-gray-300 text-gray-900 text-sm focus:outline-none focus::border-none block w-full p-2.5"></textarea>
                         </div>
                     </div>
                     <div class="flex flex-col justify-center items-center w-full py-10 px-7">
