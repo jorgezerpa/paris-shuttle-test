@@ -1,6 +1,7 @@
 import { component$, useSignal, $, useContext } from "@builder.io/qwik";
 import { globalContext } from "~/store/context/mainContext";
 import { Link } from "@builder.io/qwik-city";
+import { getTrajetsPrices } from "~/store/services/mainApi";
 
 export const BannerForm = component$(({ charge, destination }: { charge: string, destination?: string }) => {
   const context = useContext(globalContext)
@@ -9,13 +10,16 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
   const isFront = useSignal(true);
   const formRef = useSignal<HTMLFormElement>()
   const showResults = useSignal<boolean>(false)
+  const estimation = useSignal<any>()
 
-  const handleSubmit = $(() => {
+  const handleSubmit = $(async() => {
     const formData = new FormData(formRef.value)
     context.typeVoyage = formData.get('type_voyage') as string
     context.charge = formData.get('prise_en_charge') as string
     context.destination = formData.get('prise_en_destination') as string
     context.numberOfPassengers = formData.get('nombre_de_personnes') as string
+    const result = await getTrajetsPrices(formData)
+    estimation.value = result
 
     showResults.value = true
   })
@@ -27,7 +31,6 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
 
     
     <div class=' w-full bg-center bg-no-repeat bg-cover  h-[29rem]' style={{ backgroundImage: isMobile.value ? 'url(/images/visuel_mobile.jpg)' : 'url(/images/visuel_home.jpg)' }}>
-
       <div class="flex flex-col py-4  mx-auto max-w-6xl items-start text-gray-900 ">
         {/* formule */}
        { (isFront)? (
@@ -57,7 +60,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
             <div onClick$={() => { showResults.value = false }} class={`absolute top-1 right-1 text-black`}><span class="text-primary-dark font-bold text-lg"> X </span></div>
             <h3 class={`text-xl md:text-2xl text-center font-thin text-primary-light py-7`}>Résultats de l'estimation de prix</h3>
             <div class={'flex justify-between px-2'}>
-              <p class={'text-black'}>Voiture privée : <span class={'font-bold'}>150</span> €</p>
+              <p class={'text-black'}>Voiture privée : <span class={'font-bold'}>{estimation.value && estimation.value.price}</span> €</p>
               <Link href="/reservation" class={'text-primary-dark font-bold text-lg'} >Réserver</Link>
             </div>
           </div>

@@ -23,6 +23,18 @@ export const getTrajets = async () => {
     }
 }
 
+export const getTrajetsPrices = async (formData:FormData) => {
+    try {
+        // const result = await axios.post(`${baseUrl}/wp/v2/trajets/all`, formData);
+        // return result.data.data[0]
+        return { price: 75 }
+    } catch (error) {
+        throw new Error('error on mainAPI.ts')
+    }
+}
+
+
+
 //USERS
 export const createUser = async (user:any) => {
     try {
