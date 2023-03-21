@@ -1,14 +1,14 @@
 import {
-    createContextId,
-  } from '@builder.io/qwik';
+  createContextId,
+} from '@builder.io/qwik';
 
 
-export type GlobalContext = { 
-  numberOfPassengers:string
-  typeVoyage:string
-  charge:string
-  destination:string,
-  language:'en'|'fr'|'it'|'es'
+export type GlobalContext = {
+  numberOfPassengers: string
+  typeVoyage: string
+  charge: string
+  destination?: string,
+  language: 'en' | 'fr' | 'it' | 'es'
 
 };
 

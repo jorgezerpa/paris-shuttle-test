@@ -24,8 +24,8 @@ export default component$(() => {
             </div>
 
             <div class='bg-gray-100 w-full flex items-center justify-center py-20 sm:px-0 px-2'>
-                <img src="/images/atour.png" width={440} alt="" />
-            </div>
+        <img src="/images/insigne.png" width={220} alt="" />
+      </div>
 
         </div>
 

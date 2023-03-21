@@ -19,9 +19,9 @@ export default component$(({charge, destination, trajets}:{charge:string, destin
         <div class={'w-full flex justify-center'}>
           
           <div class={'max-w-[900px] w-full border border-primary-dark p-5'}>
-              {matchedTrajets.value.map((trajet:any)=>(
+              {matchedTrajets.value.map((trajet:any, index)=>(
                   //start row
-                  <div class={'flex flex-col lg:flex-row w-full justify-between items-center mb-12 lg:mb-5'}>
+                  <div key={index} class={'flex flex-col lg:flex-row w-full justify-between items-center mb-12 lg:mb-5'}>
                       <p class={'text-gray-700'}>{trajet.depart} ⇄ { trajet.destination || '---' }</p>
                       <button class={'px-6 py-3 text-white font-bold bg-primary-dark rounded-lg'}>RÉSERVER CE TRAJET</button>
                   </div>

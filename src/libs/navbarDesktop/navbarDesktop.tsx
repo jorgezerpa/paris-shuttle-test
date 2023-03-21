@@ -27,22 +27,22 @@ export const MenuElement = component$(({ item }: { item: any }) => {
 export default component$(({ isFixed = false }: { isFixed?: boolean }) => {
     const ITEMS = [
         // { title:'Accueil', path:'/' },
-        { title: 'Orly', path: '/trajet/orly', subitems: ['Paris', 'Disneyland', 'Charles de Gaulle (CDG)', 'Beauvais'] },
-        { title: 'Disneyland', path: '/trajet/disneyland', subitems: ['Paris', 'Orly', 'Charles de Gaulle (CDG)', 'Beauvais'] },
-        { title: 'Paris', path: '/trajet/paris', subitems: ['Beauvais', 'Orly', 'Charles de Gaulle (CDG)', 'Disneyland'] },
-        { title: 'Charles de Gaulle (CDG)', path: '/trajet/cdg', subitems: ['Disneyland', 'Paris', 'Beauvais', 'Orly'] },
-        { title: 'Beauvais', path: '/trajet/beauvais', subitems: ['Disneyland', 'Orly', 'Paris', 'Charles de Gaulle (CDG)'] },
+        { title: 'Orly', path: '/trajet/Orly', subitems: ['Paris', 'Disneyland', 'Charles de Gaulle (CDG)', 'Beauvais'] },
+        { title: 'Disneyland', path: '/trajet/Disneyland', subitems: ['Paris', 'Orly', 'Charles de Gaulle (CDG)', 'Beauvais'] },
+        { title: 'Paris', path: '/trajet/Paris', subitems: ['Beauvais', 'Orly', 'Charles de Gaulle (CDG)', 'Disneyland'] },
+        { title: 'Charles de Gaulle (CDG)', path: '/trajet/Cdg', subitems: ['Disneyland', 'Paris', 'Beauvais', 'Orly'] },
+        { title: 'Beauvais', path: '/trajet/Beauvais', subitems: ['Disneyland', 'Orly', 'Paris', 'Charles de Gaulle (CDG)'] },
     ];
 
 
     return (
         <div class={`bg-primary-light pl-2 justify-center hidden lg:flex ${isFixed && 'fixed w-full z-50 top-0'}`}>
-            <div class='max-w-[1350px] w-full flex text-white text-lg font-bold justify-start gap-10'>
+            <div class='w-full max-w-6xl flex text-white text-[1rem] font-bold justify-start gap-10'>
                 <div class='relative h-full py-3'><Link href={'/'}>Accueil</Link></div>
                 {ITEMS.map((item, index) => (
                     <MenuElement key={index} item={item} />
                 ))}
-                <div class='relative h-full py-3'><Link href={'/pack-family'}>Pack Family</Link></div>
+                <div class='relative h-full py-3'><a href={'/pack-family'}>Pack Family</a></div>
                 <div class='relative h-full py-3'><Link href={'/contact'}>Contact</Link></div>
             </div>
         </div>

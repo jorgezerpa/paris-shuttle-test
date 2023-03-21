@@ -10,9 +10,7 @@ export default component$(() => {
   
   return (
     <div class=''>
-      <div class={'w-full'}>
-        <BannerForm />
-      </div>
+      <BannerForm charge="no-charge" destination="no-destination" />
 
 
       <div class="flex items-center w-full mx-auto flex-col">
@@ -75,5 +73,3 @@ export default component$(() => {
     </div>
   );
 });
-
-

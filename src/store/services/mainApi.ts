@@ -2,12 +2,22 @@ import axios from "axios"
 
 const baseUrl = "http://wp-api.first-travel.solvr.fr/wp-json";
 
+const config = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET,PATCH,POST,PUT',
+    'Access-Control-Allow-Headers':
+      'Origin, X-Requested-With, Content-Type, Accept, Authorization',
+  },
+};
+
+
 
 //TRAJETS
 export const getTrajets = async () => {
     try {
-        const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`);
-        // console.log(result.data.data[0])
+        const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`, config);
+        console.log(result.data.data[0])
         return result.data.data[0]
     } catch (error) {
         return []
@@ -18,7 +28,7 @@ export const getTrajets = async () => {
 export const createUser = async (user:any) => {
     try {
         const result = await axios.post(`${baseUrl}/wp/v2/users`, user, { auth: { username:'', password:'' } });
-        // console.log(result.data.data[0])
+        //console.log(result.data.data[0])
         return result.data
     } catch (error) {
         return []
@@ -29,7 +39,7 @@ export const createUser = async (user:any) => {
 //PACKS FAMILY
 export const getPacks = async () => {
     try {
-        const result = await axios.get(`${baseUrl}/wp/v2/products/family/pack`);
+        const result = await axios.get(`${baseUrl}/wp/v2/products/family/pack`, config);
         // console.log(result.data.data[0])
         return result.data.data as any[]
     } catch (error) {

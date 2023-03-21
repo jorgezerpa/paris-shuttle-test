@@ -24,9 +24,9 @@ export default component$(() => {
                 <Form />
             </div>
 
-            <div class='w-full flex items-center justify-center py-20 sm:px-0 px-2'>
-                <img src="/images/atour.png" width={440} alt="" />
-            </div>
+            <div class="flex w-full justify-center mt-[30px] py-[30px] bg-gray-200">
+                <img src="/images/insigne.png" width={220} alt="" />
+          </div>
         </div>
 
     );

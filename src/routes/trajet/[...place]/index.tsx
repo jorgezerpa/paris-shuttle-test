@@ -15,46 +15,47 @@ export default component$(() => {
   const charge = useSignal('');
   const destination = useSignal('');
 
-  useVisibleTask$(()=>{
-    if(params.place){
+  useVisibleTask$(() => {
+    if (params.place) {
       charge.value = params.place.split('/')[0]
       destination.value = params.place.split('/')[1]
     }
-    if(!params.place){
+    if (!params.place) {
       charge.value = ''
       destination.value = ''
     }
   })
-  
+
 
   const trajetsData = useResource$(async()=>{
     return getTrajets()
   })
 
-  
+
   return (
     <div>
-      { params.place && (
+      {params.place && (
 
-        <div class="flex flex-col items-center w-full mx-auto bg-white text-white  justify-center">
+        <div class="flex flex-col items-center  w-full mx-auto bg-white text-white  justify-center">
           <Resource
             value={trajetsData}
-            onResolved={(trajets:any)=>{
+            onResolved={(trajets: any) => {
               return (
                 <div class={'flex flex-col items-center w-full mx-auto bg-white text-white  justify-center'}>
-                  <div class={'w-full'}>
-                    <BannerForm  />
+                  {/* <MenuO charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/> */}
+                  <div class="w-full mx-auto max-w-10xl">
+                    <BannerForm charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
                   </div>
-                  <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : 'no-charge'} destination={params.place ? params.place.split('/')[1] : 'no-destination'}/>
+                  <OffreMap trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''}/>
                   <TrajetList trajets={trajets} charge={params.place ? params.place.split('/')[0] : ''} destination={params.place ? params.place.split('/')[1] : ''} />
-                  <PackCard/>
-                  <Devis/>
+                  <PackCard />
+                  <Devis />
                   <div class="flex-1 w-full">
-                  <Services/> 
+                    <Services />
                   </div>
                 </div>
               )
-            }}                    
+            }}
           />
 
           <div class="flex w-full justify-center mt-[30px] py-[30px] bg-[#f5f5f5]">
@@ -68,7 +69,7 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: 'Accueil First-shuttle',
+  title: 'Trajet First-shuttle',
   meta: [
     {
       name: 'description',

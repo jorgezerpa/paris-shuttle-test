@@ -5,10 +5,10 @@ import styles from './languageDropdown.css?inline';
 
 export default component$(() => {
   const LANGUAGES = [
-    { key:'fr', 'icon': '/icons/france.svg', 'label': 'Francais' },
-    { key:'en', 'icon': '/icons/uk.svg', 'label': 'English' },
-    { key:'es', 'icon': '/icons/spain.svg', 'label': 'Español' },
-    { key:'it', 'icon': '/icons/italy.svg', 'label': 'Italiano' },
+    { key: 'fr', 'icon': '/icons/france.svg', 'label': 'Francais' },
+    { key: 'en', 'icon': '/icons/uk.svg', 'label': 'English' },
+    { key: 'es', 'icon': '/icons/spain.svg', 'label': 'Español' },
+    { key: 'it', 'icon': '/icons/italy.svg', 'label': 'Italiano' },
   ]
 
   const context = useContext(globalContext)
@@ -50,7 +50,7 @@ export default component$(() => {
               onClick$={() => {
                 currentLanguage.value = LANGUAGES[index]
                 showLanguages.value = !showLanguages.value
-                context.language=language.key as "fr" | "en" | "es" | "it"
+                context.language = language.key as "fr" | "en" | "es" | "it"
               }}
               class="flex items-center gap-2 px-1 py-1 lg:px-3 lg:py-2 hover:bg-gray-100 border-b-2 border-gray-200">
               <span><img src={language.icon} class='w-[20px] lg:w-[22px]' alt="" /></span>
