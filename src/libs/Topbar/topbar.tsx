@@ -20,7 +20,7 @@ export default component$(({ showNavbar }: { showNavbar: { value: boolean } }) =
 
           <div class='flex-1 flex justify-end items-center gap-5 text-white'>
 
-            <div class="">
+            <div class="z-50">
               <LanguageDropdown />
             </div>
 

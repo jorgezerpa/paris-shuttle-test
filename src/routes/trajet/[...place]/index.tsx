@@ -15,7 +15,6 @@ export default component$(() => {
   const { params } = useLocation()
   const charge = useSignal('');
   const destination = useSignal('');
-
   
   useTask$(({ track }) => {
     track(() => params);
@@ -39,6 +38,7 @@ export default component$(() => {
 
   return (
     <div>
+      
       {params.place && (
         <div class="flex flex-col items-center  w-full mx-auto bg-white text-white  justify-center">
           <Resource

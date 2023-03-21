@@ -21,7 +21,10 @@ export default component$(() => {
     <>
       <div class="group inline-block">
         <button
-          onClick$={() => showLanguages.value = !showLanguages.value}
+          onClick$={(e) => {
+            e.stopPropagation()
+            showLanguages.value = !showLanguages.value
+          }}
           class="outline-none focus:outline-none px-1 py-1 lg:px-3 lg:py-2 lg:bg-gray-200 bg-white lg:bg-opacity-25 flex justify-between items-center lg:min-w-[140px]"
         >
           <div class="flex gap-1 items-center">
