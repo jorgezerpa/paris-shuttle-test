@@ -5,8 +5,7 @@ export default component$(({charge, destination, trajets}:{charge:string, destin
     const matchedTrajets = useSignal<any[]>([])
 
     useTask$(({ track }) => {
-    track(() => charge);
-    track(() => destination);
+    track(() => [charge, destination, trajets]);
     if(charge) {
       matchedTrajets.value = trajets.filter((item:any)=>item.depart.toLowerCase().includes(charge.toLowerCase()))
     }

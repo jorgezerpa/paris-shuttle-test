@@ -16,8 +16,7 @@ const config = {
 //TRAJETS
 export const getTrajets = async () => {
     try {
-        const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`, config);
-        console.log(result.data.data[0])
+        const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`);
         return result.data.data[0]
     } catch (error) {
         return []
