@@ -53,13 +53,10 @@ export const getPacks = async () => {
 export const createOrder = async (order:any) => {
     try {
         const result = await axios.post(`${baseUrl}/wp/v2/orders/order/new`, order);
-        console.log(result.data.data[0])
         return result.data
-        return []
     } catch (error) {
         console.log('errroooorr--->')
         console.log(error)
-        return []
     }
 }
 
