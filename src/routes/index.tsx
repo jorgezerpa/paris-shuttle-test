@@ -1,18 +1,18 @@
-import { component$, useContext, useResource$, Resource } from '@builder.io/qwik';
+import { component$, useContext, useSignal, useTask$ } from '@builder.io/qwik';
 import { globalContext } from '~/store/context/mainContext';
 import type { DocumentHead } from '@builder.io/qwik-city';
 import { BannerForm } from '~/components/shared/bannerForm/bannerForm';
-import { getLanguage } from '~/store/services/laguageService';
-
+import languages from '~/constants/languages';
 
 export default component$(() => {
   const context = useContext(globalContext)
+  const language = useSignal<any>({})
 
-  const languageData = useResource$(async(ctx)=>{
-    ctx.track(()=>context.language)
-    const data = await getLanguage(context.language)
-    return data.home
+  useTask$(({ track })=>{
+    track(()=>context.language)
+    language.value = languages[context.language].home
   })
+
 
   const chatID = "WhAXBL5fFHupPWs9N";
   const chatOnline = `<script>(function(d, w, c) { w.ChatraID = ${chatID};  var s = d.createElement('script'); w[c] = w[c] || function() {(w[c].q = w[c].q || []).push(arguments); }; s.async = true; s.src = 'https://call.chatra.io/chatra.js'; if (d.head) d.head.appendChild(s); })(document, window, 'Chatra'); </script>`
@@ -23,18 +23,16 @@ export default component$(() => {
   return (
     <div class=''>
       <BannerForm charge={'no-charge'} destination={'no-destination'} />
-      <Resource 
-        value={languageData}
-        onResolved={(data:any)=>{
-          return (
+      
+
            <>
             <div class=" w-full  max-w-6xl mx-auto">
               <div class="w-full py-10 flex items-center justify-center gap-10 lg:flex-row flex-col">
                 <div class='w-full'>
                   <div class="border-b border-b-primary-dark mb-5">
-                    <h2 class="lg:text-2xl text-xl text-primary-dark font-bold">{ data.title }</h2>
+                    <h2 class="lg:text-2xl text-xl text-primary-dark font-bold">{ language.value.title }</h2>
                   </div>
-                  <p class="text-gray-800 ">{data.description}</p>
+                  <p class="text-gray-800 ">{language.value.description}</p>
                 </div>
                 <div class='w-full flex justify-center items-center'>
                   <img class="min-w-[280px]" src="/images/photo_about.png" alt="" />
@@ -45,7 +43,7 @@ export default component$(() => {
             <div class='bg-gray-200'>
               <div class='py-1 w-full  max-w-6xl mx-auto'>
               <div class="border-b border-b-primary-dark mb-5 mt-10 md:mx-2 mx-0">
-                <h2 class="lg:text-2xl text-2xl text-primary-dark font-bold">{data.packsTitle}</h2>
+                <h2 class="lg:text-2xl text-2xl text-primary-dark font-bold">{language.value.packsTitle}</h2>
               </div>
               <div class="flex justify-center pb-10">
                 <div class="flex flex-col lg:flex-row  items-center justify-center flex-wrap lg:flex-nowrap px-1  gap-5 w-full max-w-[1300px]  ">
@@ -85,15 +83,15 @@ export default component$(() => {
               <div class="flex justify-center pb-10">
                 <div class="flex flex-col lg:flex-row  items-center justify-center flex-wrap lg:flex-nowrap px-1  gap-5 w-full max-w-6xl  ">
                   <div class=" p-5 shadow-sm shadow-[rgba(60,60,60,.5)] bg-white w-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(/images/background_navette_privee.png)' }} >
-                    <h2 class="mb-2 text-xl text-primary-dark font-bold">{ data.privateCarTitle }</h2>
-                    { data.privateCarItems.map((item:any, index:any)=>(
+                    <h2 class="mb-2 text-xl text-primary-dark font-bold">{ language.value.privateCarTitle }</h2>
+                    { language.value.privateCarItems.map((item:any, index:any)=>(
                       <p key={index+'priveeCarHome'} class="mb-1 text-gray-600 flex items-center gap-2"><span><img src="/images/plus_list.png" alt="" /></span>{ item }</p>
                     ))}
                   </div>
 
                   <div class=" p-5 shadow-sm shadow-[rgba(60,60,60,.5)] bg-white w-full bg-center bg-no-repeat bg-cover" style={{ backgroundImage: 'url(/images/background_navette_partagee.png)' }} >
-                    <h2 class="mb-2 text-xl text-primary-dark font-bold">{ data. privateVANTitle}</h2>
-                    { data.privateVANItems.map((item:any, index:any)=>(
+                    <h2 class="mb-2 text-xl text-primary-dark font-bold">{ language.value. privateVANTitle}</h2>
+                    { language.value.privateVANItems.map((item:any, index:any)=>(
                       <p key={index+'priveeCarHome'} class="mb-1 text-gray-600 flex items-center gap-2"><span><img src="/images/plus_list.png" alt="" /></span>{ item }</p>
                     ))}
                   </div>
@@ -101,10 +99,6 @@ export default component$(() => {
               </div>
             </div>
            </> 
-          )
-        }}
-      />
-
 
 
 
