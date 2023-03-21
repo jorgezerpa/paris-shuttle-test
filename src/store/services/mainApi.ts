@@ -19,7 +19,7 @@ export const getTrajets = async () => {
         const result = await axios.get(`${baseUrl}/wp/v2/trajets/all`);
         return result.data.data[0]
     } catch (error) {
-        return []
+        throw new Error('error on mainAPI.ts')
     }
 }
 
@@ -30,7 +30,7 @@ export const createUser = async (user:any) => {
         //console.log(result.data.data[0])
         return result.data
     } catch (error) {
-        return []
+        throw new Error('error on mainAPI.ts')
     }
 }
 
@@ -42,7 +42,7 @@ export const getPacks = async () => {
         // console.log(result.data.data[0])
         return result.data.data as any[]
     } catch (error) {
-        return []
+        throw new Error('error on mainAPI.ts')
     }
 }
 
@@ -55,7 +55,7 @@ export const createOrder = async (order:any) => {
         return result.data
     } catch (error) {
         console.log('errroooorr--->')
-        console.log(error)
+        throw new Error('error on mainAPI.ts')
     }
 }
 
@@ -67,7 +67,7 @@ export const submitContactForm = async(data:FormData) => {
         return result.data
     } catch (error) {
         console.log('contact form error--->',error)
-        return 'error'
+        throw new Error('error on mainAPI.ts')
     }
 }
 
@@ -77,6 +77,6 @@ export const submitDevisForm = async(data:FormData) => {
         return result.data
     } catch (error) {
         console.log('contact form error--->',error)
-        return 'error'
+        throw new Error('error on mainAPI.ts')
     }
 }
