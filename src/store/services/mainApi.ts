@@ -24,6 +24,7 @@ export const getTrajets = async () => {
 }
 
 export const getTrajetsPrices = async (formData:FormData) => {
+    console.log(formData)
     try {
         // const result = await axios.post(`${baseUrl}/wp/v2/trajets/all`, formData);
         // return result.data.data[0]
