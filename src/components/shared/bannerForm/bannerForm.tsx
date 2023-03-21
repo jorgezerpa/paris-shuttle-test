@@ -52,7 +52,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
         </div>)
         }
 
-        <form ref={formRef} class="relative bg-opacity-60 bg-white  p-10 pt-5 mt-5 rounded-[5px] border-gray-100 border-2 border-solid lg:w-[25rem] sm:w-[36rem] w-full">
+        <form preventdefault:submit onSubmit$={handleSubmit} ref={formRef} class="relative bg-opacity-60 bg-white  p-10 pt-5 mt-5 rounded-[5px] border-gray-100 border-2 border-solid lg:w-[25rem] sm:w-[36rem] w-full">
           <div class={`${!showResults.value && 'hidden'} absolute top-0 left-0 bottom-0 right-0 bg-white z-50`}>
             <div onClick$={() => { showResults.value = false }} class={`absolute top-1 right-1 text-black`}><span class="text-primary-dark font-bold text-lg"> X </span></div>
             <h3 class={`text-xl md:text-2xl text-center font-thin text-primary-light py-7`}>Résultats de l'estimation de prix</h3>
@@ -64,11 +64,11 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
 
           <ul class="flex flex-row  w-auto md:items-start items-center justify-center">
             <li>
-              <input type="radio" name="type_voyage" id="id_type_voyage_0" value={'simple'} checked/>
+              <input required type="radio" name="type_voyage" id="id_type_voyage_0" value={'simple'} checked/>
               <label class="text-black "><span> Aller Simple</span></label>
             </li>
             <li class="ml-10 list-none">
-              <input type="radio" name="type_voyage" id="id_type_voyage_1" value={'retour'} />
+              <input required type="radio" name="type_voyage" id="id_type_voyage_1" value={'retour'} />
               <label class="text-black"><span> Aller / Retour</span></label>
             </li>
           </ul>
@@ -76,7 +76,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
             <li class="flex px-2 items-center border-gray-300 border-[1px] border-solid mt-3 lg:w-[20rem] md:w-full">
               <img class=" w-[22px] text-white relative z-300" src="/icons/avion.png" alt="icon avion" />
 
-              <select id="id_prise_en_charge" name="prise_en_charge" class="text-black h-[34px]  w-[32rem] md:w-full">
+              <select required id="id_prise_en_charge" name="prise_en_charge" class="text-black h-[34px]  w-[32rem] md:w-full">
                 <option selected={'no-charge'.includes(charge.toLocaleLowerCase())} value="">Lieu de prise en charge</option>
                 <option selected={'orly'.includes(charge.toLocaleLowerCase())} value="orly">Orly</option>
                 <option selected={'disneyland'.includes(charge.toLocaleLowerCase())} value="dineyland">Disneyland</option>
@@ -87,7 +87,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
             </li>
             <li class="flex px-2 items-center border-gray-300 border-[1px] border-solid mt-3 lg:w-[20rem]  md:w-full">
               <img class="w-[15px]" src="/icons/marker.png" alt="icon marker" />
-              <select id="id_prise_en_charge" name="prise_en_destination" class="text-black bg-transparent h-[34px]  w-[32rem] md:w-full">
+              <select required id="id_prise_en_charge" name="prise_en_destination" class="text-black bg-transparent h-[34px]  w-[32rem] md:w-full">
                 <option selected={destination ? 'no-destination'.includes(destination.toLocaleLowerCase()) : false} value="">destination</option>
                 <option selected={destination ? 'paris'.includes(destination.toLocaleLowerCase()) : false} value="paris">Paris</option>
                 <option selected={destination ? 'orly'.includes(destination.toLocaleLowerCase()) : false} value="orly">Orly</option>
@@ -100,7 +100,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
 
               <img class="w-[22px]" src="/icons/passegers.png" alt="icon passagers" />
 
-              <select id="id_prise_en_charge" name="nombre_de_personnes" class="text-black  bg-transparent h-[34px] w-[32rem]  md:w-full">
+              <select required id="id_prise_en_charge" name="nombre_de_personnes" class="text-black  bg-transparent h-[34px] w-[32rem]  md:w-full">
                 <option value="" >Nombre de personnes</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -114,7 +114,7 @@ export const BannerForm = component$(({ charge, destination }: { charge: string,
             </li>
           </ul>
           <div class=" flex items-center justify-center">
-            <button type="button" onClick$={handleSubmit} class="p-1 px-5 rounded-md bg-[#213665] text-white font-bold flex mt-8  ">CALCULER</button>
+            <button type="submit"  class="p-1 px-5 rounded-md bg-[#213665] text-white font-bold flex mt-8  ">CALCULER</button>
           </div>
 
           
