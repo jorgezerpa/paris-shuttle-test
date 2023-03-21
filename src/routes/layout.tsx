@@ -1,13 +1,11 @@
 import { component$, Slot, useSignal } from '@builder.io/qwik';
 import { Link } from '@builder.io/qwik-city';
-import { useLocation } from '@builder.io/qwik-city';
 import Header from '~/components/header/header';
 
 import { DrawerMobile } from '~/libs/drawerMobile/drawerMobile';
 
 
 export default component$(() => {
-  const { isNavigating } = useLocation();
   const showMobileMenu = useSignal(false)
 
     const ITEMS = [
@@ -30,19 +28,12 @@ export default component$(() => {
       <div class={'absolute top-0 left-0 right-0 z-50'}>
         <Header showNavbar={showMobileMenu}/>
       </div>
-      { isNavigating && (
-        <div class={'text-xl text-black min-h-screen justify-center items-center flex'}>
-          <div class="lds-facebook"><div></div><div></div><div></div></div>
-        </div>
-
-      )}
-      { !isNavigating &&  (
-        <main >
-          <section>
-            <Slot />
-          </section>
-        </main>
-      )}
+      
+      <main >
+        <section>
+          <Slot />
+        </section>
+      </main>
       
       {/* FOOTER  */}
       <>
